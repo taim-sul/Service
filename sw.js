@@ -1,4 +1,4 @@
-const CACHE_NAME = 'servicestationen-v4';
+const CACHE_NAME = 'servicestationen-v6';
 const URLS_TO_CACHE = [
   './',
   './index.html',
