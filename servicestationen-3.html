@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Servicestationen – Reparationsrapport</title>
+<meta name="theme-color" content="#f5c00d">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAMnElEQVR4nO3daXBW1R0G8Ofed0lCxGDYAhKiiYSlRBrEuI/gBnTaqhVxbR2tdqZ06oLYjh2dEW3H1qmjU5dxOg71I0WtUsW26iCrUgETFUUSEQmLRhCD2fO+7z39cCeaYnKT967nnvP8ZvgEhMs5/+f+z92NMWPGCBBpyox6A4iixACQ1hgA0hoDQFpjAEhrDABpjQEgrTEApDUGgLTGAJDWGADSGgNAWmMASGsMAGktGfUGqG7vcz2ef0bFogIftoQGYvB5AO/8KHK3GA5vGAAXoiz4oTAQ+WEAhkHmgh8KA+GMARhEnIt+MAzDdzEA/ahY9INhGGwMAPQq/GPpHgRtA6Bz0Q9GxzBoFwAW/tB0CoI2AWDh50+HIGhxKwSL3x0dxk3pDqDDBIZF1W6gZABY+MFRLQjKLYFY/MFSbXyV6QCqTUwcqNANlOgALP5oqDDusQ+ACpMQZ3Ef/9gugeI+8CqK45Iolh2AxS+nOM5L7AIQx0HWSdzmJ1YBiNvg6ipO8xSbAMRpUCk+8yX9QXBcBpIGJ/PBsdQdgMWvBpnnUdoAyDxolD9Z51PKAMg6WOSNjPMqZQCIwiJdAGTcS5B/ZJtfqQIg2+BQMGSaZ2kCINOgUPBkmW8pAiDLYFC4ZJj3yAMgwyBQdKKe/8gDQBSlSAMQdfpJDlHWQWQBYPFTf1HVQyQBYPHTQKKoCx4DkNZCDwD3/uQk7PoINQAsfhqOMOuESyDSWmgB4N6f8hFWvbADkNZCCQD3/uRGGHUTeABY/ORF0PXDJRBpLdAAcO9PfgiyjtgBSGuBBYB7f/JTUPXEDkBaYwBIa4EEgMsfCkIQdcUOQFrzPQDc+1OQ/K4vdgDSGgNAWvM1AFz+UBj8rLOkbz+JvpGzgJ2fGtixx8TH+w3s+czAoVYDh1qB9i4DPb1AJgukkkBRAVBUIFBUABSmgTElAmWjBSaMBiaOESgrFZg8XuCkCQKmEfX/TD0MgE86uoDXtplY82YCb31goq1z6L/Tk7F/tbb3r+yBq7wwDVSXC0yrsDC9QmB6hcCpp1goLvRn+3Xl2zfCdF3+HDxs4OmXE1j5egId3eH+28kE8L2TBepmWDhjuoW6GRZKisPdhij58e0xBsCl7l7g8X8k8dfVCfRkot4am2EAv70ui19elot6U0LhRwC4BHKhcZ+BJQ+n0LRfrkW5EMDRdrm2SXYMQJ42vmviFw+l0KlXw1OWL6dBdVn+rG8wceODLH5Z+FF3vBA2TE377WVPJhv1lpCfGIBhyOaAWx9Nob0r6i0hvzEAw7BiTQIffsqDSxV5DoDq6/+uHuCpFxNRbwYNwmv9sQMM4fn1CXz5Nff+quJp0CG8sMGffUR1ucDZNRZqp1goH2ff51NcKFCYBhIJoLsH6Og20PIV0HLEwO4DBnY12/cTNe4zIHy5XEnHYgAcfNVmYPsubwGYW2vh9sU51E6xHP9ccRFQXCQw7gSgplLgojnf/l5bJ7DtIxPrG0ysqzex5zN2JL8wAA62feRtz7v0qixuu9L7bQkjRwDzZluYN9sOUeM+A//cnMBLm0x8+jnD4AWPARzs2ON+eBacYflS/AOpLhdYdnUW6x/vxcr7MvjxORaSPE53hR3AQXOL+7+75PJwrpidNdPCWTMt3HPEwIpXEig5jgcL+fAUANVPgX5+xN3yorgQmHVKuIU4vlTg7uv1vEy997ke13eGcgnkoLPLXQDGjuJeOC4YAAdu7/NvD/nBGHKPAXDg9sDycKuBTw7y7EwcMAAOjhvhfinz6CqeX4gDBsBBWan7AKzeZOKBZ5LI6vF0YmwxAA6qJno7mH365QQuWZrGqjfkeW6Y/h8D4GDWFO9nc3YfMHDXE0nU3lSAJQ+n8OwbCezl1VtpcKHqoG66haIC+5Zorzq6gDVvmVjzlr3PGTtKoKZKoKZSYGalhZpKgQmjefo0bAyAg8I0cOFpFl5+0/9GeajVwNrtBtZuBwD7dNPoEjsQNVUCs6dYqK0WOGEkQxEkBmAIP1uQCyQAA/nyqIF19QbW1QN9oZg6WeDcUy3MrbVw9kze8+M3Ty/GUv1WiD7X3Z/CpveiP1w6vhhYUJfD4gstnD7N+fZq3fBWiADd//MsCtNRbwXwdQew6o0EFt2TwsV3pPH8+gRPs3rEAAxD1YkCD9ws141mjfsMLH0sifl3prGuntPoFkdumBZfkMOdV8sVAgD4eL+BG/6Qwl1PJvnCLhcYgDzcuiiH+27KIiHhqK1am8CV96ZxqJXXGPIh4VTK7cYf5LByeQaTxsl3enLHJwauuz+Fox1Rb0l8eAqAH6+njqO66RZef6QXv74ihxGSDcGuZgO3/yWl1VskvNQhO4BLRQXAsmuy2PhEL5ZcnpPqgtXa7SaeXccLBsPh+QMZulwLGEp3L/Cft02s3pjAhnfNyF+iO75UYPOTvUhpcKnTSwfQYHjCUZgGLj3XwqXnWujoBja9Z2LTeya27jSxq9mAFXKDaDlivzrlivN5ocAJAxCA4kJgfp2F+XX21dq2TqChyURDk4F3mkw0NBo40hb82ZoXN5gMwBAYgBCMHAGcN8vCebMAwC7IvZ8bqG8ysHWnif9+aOLjA/6//vDNHSa6euzjFRoYAxCRijKBijKBy86zu8QXXxl4dauJlzab2PKBP+cmsjn75V68b2hwnkda11Ohfht3gsD1l+Tw9+UZvPZI7zevQfRqV7PaF8a81h9Pg0qoulzgmd9l8JtrvZ9KOnhY7QB4xQBI7Fc/yeGiOd46wdF2nzZGUQyA5G7+obezON29Pm2IonwJAI8DgnPaVG8dIKHwBWE/6o4dQHLpFDw9jMNToM4YAAeb3zex9LEkmvZHdyDZ1ultGVNS7N+2qIgBcJDJ2h/Ju/iONG75Uwqb3w9/uLw+7TVprDw36cnItxlV+ThACODVrSauXZ7CBbelsWJNOF+O7MkAT7zg7Vrl5PFqBsCvemMHyNPuAwaW/y2JulvSuPHBFFZvNPF1AA+gdPbYX6ff6eED3aYB1FTyKrAT3grhUjZn33e/druJZAKYM83CvFoLZ8wQqKly//4eSwD/3mLizyuT2H3AW5eZWiFQXOTpRyjP1wBULCrQ8vmAbA7Y8sG39/AUpoEZJ1mYOllg6mSB8nECZaUCY0fZn0ItTAOGYb9ysb3LwIFD9vcE3t5pYH2DiRaXn2Y61iWnq7n393O5zQ4QgO5e4J1GE+80RrsdPzqHt0IPhccAijr/+xamTFLzANhPvgdA5bNBcXLrIjX3/n7XFzuAgq66MIc5fAZgWAIJALtAdConCtx7g3xvsPNDEHXFDqCQ0pECK+7OYOSIqLckPhgARUwcI/Dc7zM4eQIPfPMRWABUWAZNmSSw8EwL6VTUW+Jsbq2Fl/6YQdWJ6hZ/UPXE6wAOThwr8NSyDNo6gX9tSeCVLSY2v2+iV5IvPpaVCiy7JodFc3Mw+OSjK57fDDcU1a4Md3QDGxpMrKu3w7Dvi/Arr7pc4KcLclg8LyfFhzuCFuRqgh0gT8WFwMIzLSw80z7N2NxiYNtHJuqbDDQ02W+B8/ubwMkEMK1CYN5sC/PrcqipVHepE7bAOwCgXhdwYgn7pVeN+ww0t9j3+Rz80sDhVqC13UBrO9DdY6A3a99DlDCBVBJIJ4GS4wRGHy8wusS+jfnkiQLV5QKnVlnSvYU6LEEfS4YSAECvEJA/wjiRwtOgpLXQAqDCaVEKT1j1wg5AWgs1AOwCNBxh1knoHYAhICdh1weXQKS1SALALkADiaIuIusADAH1F1U9RLoEYggIiLYOeAxAWos8AOwCeot6/iMPABD9IFA0ZJh3KQIAyDEYFB5Z5luaAADyDAoFS6Z5lioAgFyDQ/6TbX6lCwBRmKQMgGx7CfKHjPMqZQAAOQeL3JN1PqUNACDvoFF+ZJ7H0J4J9orPFMePzIXfR+oO0F8cBpO+FZf5ik0AgPgMqu7iNE+xCgAQr8HVUdzmJ3YBAOI3yLqI47zE5iB4MDw4jl4cC79PLDtAf3EefBXEffxjHwAg/pMQVyqMe+yXQMfikih4KhR+HyU6QH8qTY6MVBtf5TpAf+wG/lGt8PsoHYA+DIJ7qhZ+H+WWQANRfRKDosO4adEB+mM3GJoOhd9HuwD0YRC+S6fC76NtAPrTOQw6Fn1/DEA/OgVB98LvwwAMQsUwsOi/iwEYhjiHgUXvjAFwQeZAsODzwwD4IMpAsOC9YQAC5kc4WOTBYQBIa1rcCkE0GAaAtMYAkNYYANIaA0BaYwBIawwAaY0BIK0xAKQ1BoC0xgCQ1hgA0hoDQFr7H56a7DSIhse2AAAAAElFTkSuQmCC">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.2/jspdf.umd.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Mono:wght@400;700&display=swap');
+
+/* ═══ THEME VARIABLES ═══ */
+:root,html[data-theme="dark"]{
+--gold:#f5c00d;--gold-dim:#c9a00a;--bg:#111;--bg2:#1a1a1a;--bg3:#252525;--bg4:#333;
+--text:#eee;--text2:#aaa;--text3:#666;--border:rgba(255,255,255,.08);
+--card-bg:#1a1a1a;--input-bg:#252525;
+--green:#34d399;--red:#ef4444;--blue:#3b82f6;--purple:#a78bfa;--orange:#f97316;
+--radius:14px;--preview-bg:#fff;--preview-text:#111;--preview-border:#ddd;--preview-th:#f5f5f5;
+--body-gradient:radial-gradient(circle at 20% 50%,rgba(245,192,13,.03) 0%,transparent 50%),radial-gradient(circle at 80% 20%,rgba(245,192,13,.02) 0%,transparent 40%);
+}
+html[data-theme="light"]{
+--bg:#f4f4f5;--bg2:#fff;--bg3:#e8e8ec;--bg4:#d4d4d8;
+--text:#18181b;--text2:#52525b;--text3:#a1a1aa;--border:rgba(0,0,0,.08);
+--card-bg:#fff;--input-bg:#f0f0f3;
+--preview-bg:#fff;--preview-text:#111;
+--body-gradient:radial-gradient(circle at 20% 50%,rgba(245,192,13,.06) 0%,transparent 50%),radial-gradient(circle at 80% 20%,rgba(245,192,13,.04) 0%,transparent 40%);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);background-image:var(--body-gradient);color:var(--text);min-height:100vh;overflow-x:hidden;transition:background .3s,color .3s}
+input,select,textarea,button{font-family:inherit;font-size:inherit}
+.mono{font-family:'Space Mono',monospace}
+
+.app{max-width:900px;margin:0 auto;padding:0 16px 100px}
+header{display:flex;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid var(--border)}
+header img{height:46px;border-radius:8px}
+header .info{flex:1}
+header .info h1{font-size:1rem;color:var(--gold);font-weight:700;letter-spacing:-.3px}
+header .info p{font-size:.68rem;color:var(--text3);line-height:1.4}
+
+/* Theme toggle in header */
+.theme-btn{width:38px;height:38px;border-radius:10px;border:1px solid var(--border);background:var(--bg3);
+cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.1rem;transition:.2s;flex-shrink:0}
+.theme-btn:hover{border-color:var(--gold)}
+
+/* Sync indicator */
+.sync-dot{width:8px;height:8px;border-radius:50%;display:inline-block;margin-left:6px;transition:.3s}
+.sync-dot.online{background:var(--green);box-shadow:0 0 6px var(--green)}
+.sync-dot.offline{background:var(--red)}
+.sync-dot.syncing{background:var(--gold);animation:pulse 1s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+
+nav{display:flex;gap:6px;padding:12px 0;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+nav::-webkit-scrollbar{display:none}
+nav button{flex-shrink:0;padding:8px 16px;border:1px solid var(--border);background:var(--card-bg);color:var(--text2);
+border-radius:99px;font-size:.76rem;font-weight:500;cursor:pointer;transition:.2s}
+nav button.active{background:var(--gold);color:#111;border-color:var(--gold);font-weight:700}
+nav button:hover:not(.active){border-color:var(--gold);color:var(--gold)}
+
+.card{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:14px;transition:background .3s}
+.card h2{font-size:.88rem;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.card h2 .badge{background:var(--gold);color:#111;font-size:.58rem;padding:2px 8px;border-radius:99px;font-weight:700}
+
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.form-row.full{grid-template-columns:1fr}
+.form-row.triple{grid-template-columns:1fr 1fr 1fr}
+.form-group{display:flex;flex-direction:column;gap:4px}
+.form-group label{font-size:.68rem;color:var(--text3);font-weight:500;text-transform:uppercase;letter-spacing:.5px}
+.form-group input,.form-group select,.form-group textarea{
+background:var(--input-bg);border:1px solid var(--border);color:var(--text);padding:10px 12px;
+border-radius:8px;font-size:.85rem;outline:none;transition:.2s}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(245,192,13,.12)}
+.form-group textarea{resize:vertical;min-height:55px}
+.form-group select{-webkit-appearance:none;appearance:none;cursor:pointer;
+background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23999' fill='none' stroke-width='1.5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 20px;border:none;border-radius:8px;
+font-size:.82rem;font-weight:600;cursor:pointer;transition:.15s}
+.btn:active{transform:scale(.97)}
+.btn-gold{background:var(--gold);color:#111}
+.btn-gold:hover{background:var(--gold-dim)}
+.btn-outline{background:transparent;border:1px solid var(--border);color:var(--text2)}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+.btn-green{background:var(--green);color:#111}
+.btn-red{background:var(--red);color:#fff}
+.btn-blue{background:var(--blue);color:#fff}
+.btn-sm{padding:6px 12px;font-size:.72rem}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.btn-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+
+.wizard-steps{display:flex;gap:0;margin-bottom:18px;position:relative}
+.wizard-steps::before{content:'';position:absolute;top:14px;left:0;right:0;height:2px;background:var(--bg4)}
+.step-dot{position:relative;z-index:1;flex:1;display:flex;flex-direction:column;align-items:center;gap:5px}
+.step-dot .dot{width:28px;height:28px;border-radius:50%;background:var(--bg3);border:2px solid var(--bg4);
+display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:700;color:var(--text3);transition:.3s}
+.step-dot.active .dot{background:var(--gold);border-color:var(--gold);color:#111;box-shadow:0 0 14px rgba(245,192,13,.3)}
+.step-dot.done .dot{background:var(--green);border-color:var(--green);color:#111}
+.step-dot span{font-size:.55rem;color:var(--text3);text-transform:uppercase;letter-spacing:.5px}
+.step-dot.active span{color:var(--gold)}
+
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(92px,1fr));gap:8px;margin-bottom:14px}
+.cat-card{background:var(--bg3);border:2px solid transparent;border-radius:12px;padding:12px 6px;text-align:center;
+cursor:pointer;transition:.2s;position:relative;overflow:hidden}
+.cat-card:hover{border-color:rgba(245,192,13,.4);transform:translateY(-1px)}
+.cat-card.active{border-color:var(--gold);background:rgba(245,192,13,.08);box-shadow:0 0 16px rgba(245,192,13,.08)}
+.cat-card .cat-icon{font-size:1.6rem;margin-bottom:3px;display:block}
+.cat-card .cat-name{font-size:.58rem;color:var(--text2);font-weight:600;text-transform:uppercase;letter-spacing:.3px;line-height:1.3}
+.cat-card.active .cat-name{color:var(--gold)}
+.cat-card .cat-count{position:absolute;top:4px;right:5px;font-size:.5rem;color:var(--text3);background:var(--bg);padding:1px 5px;border-radius:8px}
+
+.parts-panel{background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:14px;animation:slideD .2s ease}
+@keyframes slideD{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+.parts-search{width:100%;background:var(--bg);border:1px solid var(--border);color:var(--text);padding:9px 12px;border-radius:8px;font-size:.82rem;outline:none;margin-bottom:10px}
+.parts-search:focus{border-color:var(--gold)}
+.parts-list{display:flex;flex-wrap:wrap;gap:6px;max-height:200px;overflow-y:auto;padding-right:4px}
+.part-chip{padding:5px 11px;background:var(--bg);border:1px solid var(--border);border-radius:20px;font-size:.72rem;
+cursor:pointer;transition:.15s;color:var(--text2);white-space:nowrap}
+.part-chip:hover{border-color:var(--gold);color:var(--gold)}
+.part-chip.selected{border-color:var(--gold);background:var(--gold);color:#111;font-weight:600}
+
+.line-group{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:12px;margin-bottom:8px;position:relative}
+.line-group .line-type-tag{position:absolute;top:-1px;right:10px;font-size:.5rem;text-transform:uppercase;letter-spacing:.5px;padding:2px 8px;border-radius:0 0 6px 6px;font-weight:700}
+.t-del{background:var(--blue);color:#fff}
+.t-arbejde{background:var(--purple);color:#fff}
+.t-service{background:var(--green);color:#111}
+.t-arblon{background:var(--orange);color:#fff}
+.t-andet{background:var(--text3);color:#fff}
+.line-fields{display:grid;grid-template-columns:1fr 55px 82px 26px;gap:8px;align-items:center}
+.line-fields input,.arblon-fields input{background:var(--bg);border:1px solid var(--border);color:var(--text);padding:8px;border-radius:6px;font-size:.8rem}
+.line-fields input:focus,.arblon-fields input:focus{border-color:var(--gold);outline:none}
+.line-remove{width:26px;height:26px;border-radius:6px;border:none;background:transparent;color:var(--red);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.9rem;transition:.15s}
+.line-remove:hover{background:var(--red);color:#fff}
+.arblon-fields{display:grid;grid-template-columns:1fr 62px 62px 82px 26px;gap:8px;align-items:center}
+.arblon-label{font-size:.55rem;color:var(--text3);text-align:center;margin-top:1px}
+
+.add-btns{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.add-btn{padding:7px 13px;border:1px dashed var(--border);background:transparent;color:var(--text3);border-radius:8px;
+font-size:.7rem;cursor:pointer;transition:.15s;display:flex;align-items:center;gap:5px}
+.add-btn:hover{border-color:var(--gold);color:var(--gold)}
+.add-btn .ad{width:6px;height:6px;border-radius:50%;display:inline-block}
+
+.tbl{width:100%;border-collapse:collapse;font-size:.76rem}
+.tbl th{text-align:left;padding:7px;color:var(--text3);font-size:.62rem;text-transform:uppercase;letter-spacing:.5px;border-bottom:1px solid var(--border);font-weight:600}
+.tbl td{padding:7px;border-bottom:1px solid var(--border)}
+.tbl tr:hover td{background:rgba(245,192,13,.02)}
+
+.tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:.62rem;font-weight:600}
+.tag-gold{background:rgba(245,192,13,.12);color:var(--gold)}
+.tag-green2{background:rgba(52,211,153,.12);color:var(--green)}
+
+.search-bar{display:flex;gap:8px;margin-bottom:14px}
+.search-bar input{flex:1;background:var(--input-bg);border:1px solid var(--border);color:var(--text);padding:10px 14px;border-radius:8px;font-size:.82rem;outline:none}
+.search-bar input:focus{border-color:var(--gold)}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(125px,1fr));gap:10px;margin-bottom:16px}
+.stat-card{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:14px;text-align:center;transition:background .3s}
+.stat-card .val{font-size:1.2rem;font-weight:700;color:var(--gold);font-family:'Space Mono',monospace}
+.stat-card .lbl{font-size:.58rem;color:var(--text3);margin-top:4px;text-transform:uppercase;letter-spacing:.5px}
+
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:999;align-items:center;justify-content:center;padding:12px;backdrop-filter:blur(4px)}
+.overlay.show{display:flex}
+.modal{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:20px;width:100%;max-width:720px;max-height:92vh;overflow-y:auto}
+.preview-box{background:var(--preview-bg);color:var(--preview-text);border-radius:10px;padding:24px;max-height:62vh;overflow-y:auto;font-size:12px}
+.preview-box table{width:100%;border-collapse:collapse;margin:8px 0}
+.preview-box table th,.preview-box table td{padding:4px 7px;border:1px solid var(--preview-border);text-align:left;font-size:11px}
+.preview-box table th{background:var(--preview-th);font-weight:600}
+
+.toggle-row{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.toggle{width:44px;height:24px;background:var(--bg4);border-radius:12px;position:relative;cursor:pointer;transition:.2s}
+.toggle.on{background:var(--gold)}
+.toggle::after{content:'';position:absolute;top:2px;left:2px;width:20px;height:20px;background:#fff;border-radius:50%;transition:.2s}
+.toggle.on::after{left:22px}
+
+.empty{text-align:center;padding:36px 20px;color:var(--text3);font-size:.82rem}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.section{animation:fadeIn .2s ease}
+.spinner{display:inline-block;width:14px;height:14px;border:2px solid var(--bg4);border-top-color:var(--gold);border-radius:50%;animation:sp .6s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+
+@media(max-width:600px){
+.form-row,.form-row.triple{grid-template-columns:1fr}
+.stats{grid-template-columns:1fr 1fr}
+.cat-grid{grid-template-columns:repeat(auto-fill,minmax(75px,1fr));gap:5px}
+.line-fields{grid-template-columns:1fr 48px 68px 24px}
+.arblon-fields{grid-template-columns:1fr 50px 50px 68px 24px}
+}
+::-webkit-scrollbar{width:4px;height:4px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--bg4);border-radius:3px}
+</style>
+</head>
+<body>
+<div class="app">
+<header>
+<img id="logo" alt="Logo">
+<div class="info">
+<h1>SERVICESTATIONEN <span class="sync-dot offline" id="syncDot" title="Firebase"></span></h1>
+<p>Autoværksted & Bilpleje · Glentevej 45, 4600 Køge<br>22 35 22 35 · info@servicestationen.dk</p>
+</div>
+<button class="theme-btn" id="themeBtn" onclick="toggleTheme()" title="Skift tema">🌙</button>
+</header>
+<nav>
+<button onclick="go('dashboard')" data-s="dashboard">Dashboard</button>
+<button onclick="go('newReport')" data-s="newReport">+ Ny Rapport</button>
+<button onclick="go('customers')" data-s="customers">Kunder</button>
+<button onclick="go('vehicles')" data-s="vehicles">Biler</button>
+<button onclick="go('reports')" data-s="reports">Rapporter</button>
+</nav>
+<div id="content"></div>
+</div>
+
+<div class="overlay" id="previewOverlay">
+<div class="modal">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+<h2 style="color:var(--gold);font-size:.9rem">Forhåndsvisning</h2>
+<button class="btn btn-outline btn-sm" onclick="closePreview()">✕ Luk</button>
+</div>
+<div id="previewContent" class="preview-box"></div>
+<div class="btn-row" style="justify-content:flex-end">
+<button class="btn btn-green btn-sm" onclick="approveReport()">✓ Godkend</button>
+<button class="btn btn-blue btn-sm" onclick="sharePDF()">📤 Del PDF</button>
+</div>
+</div>
+</div>
+
+<script>
+// ═══ THEME ═══
+function getTheme(){return localStorage.getItem('ss_theme')||'dark';}
+function applyTheme(t){document.documentElement.setAttribute('data-theme',t);
+document.getElementById('themeBtn').textContent=t==='dark'?'☀️':'🌙';
+document.querySelector('meta[name="theme-color"]').content=t==='dark'?'#111':'#f4f4f5';}
+function toggleTheme(){const t=getTheme()==='dark'?'light':'dark';localStorage.setItem('ss_theme',t);applyTheme(t);}
+applyTheme(getTheme());
+
+// ═══ LOGO ═══
+const LOGO_SRC="data:image/jpeg;base64,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";
+document.getElementById('logo').src=LOGO_SRC;
+
+// ═══ FIREBASE ═══
+firebase.initializeApp({
+apiKey:"AIzaSyADJ-fgD_1_mDZhDKCYg5LxHTR3o6sy9ns",
+authDomain:"servicestationen-55e2c.firebaseapp.com",
+projectId:"servicestationen-55e2c",
+storageBucket:"servicestationen-55e2c.firebasestorage.app",
+messagingSenderId:"197274297717",
+appId:"1:197274297717:web:9a834ee9fa1fd676e8df3c"
+});
+const db_fs=firebase.firestore();
+db_fs.enablePersistence({synchronizeTabs:true}).catch(e=>console.log('Persistence:',e));
+
+// Sync status
+function setSyncStatus(s){const d=document.getElementById('syncDot');d.className='sync-dot '+s;d.title=s==='online'?'Synkroniseret':s==='syncing'?'Synkroniserer...':'Offline';}
+setSyncStatus('syncing');
+
+// ═══ DATA LAYER (Firebase + localStorage fallback) ═══
+let DB={customers:[],reports:[]};
+const LOCAL_KEY='ss_data_v4';
+
+function saveLocal(){localStorage.setItem(LOCAL_KEY,JSON.stringify(DB));}
+function loadLocal(){try{return JSON.parse(localStorage.getItem(LOCAL_KEY))||{customers:[],reports:[]};}catch(e){return{customers:[],reports:[]};}}
+
+// Firestore sync
+async function syncToFirestore(){
+setSyncStatus('syncing');
+try{
+await db_fs.collection('appData').doc('main').set({customers:DB.customers,reports:DB.reports,updatedAt:firebase.firestore.FieldValue.serverTimestamp()});
+setSyncStatus('online');
+}catch(e){console.error('Sync error:',e);setSyncStatus('offline');}
+}
+
+// Listen for realtime updates
+db_fs.collection('appData').doc('main').onSnapshot(doc=>{
+if(doc.exists){
+const d=doc.data();
+DB.customers=d.customers||[];
+DB.reports=d.reports||[];
+saveLocal();
+setSyncStatus('online');
+// Refresh current view
+const activeBtn=document.querySelector('nav button.active');
+if(activeBtn&&!editingId)activeBtn.click();
+}
+},err=>{console.error('Snapshot error:',err);setSyncStatus('offline');DB=loadLocal();});
+
+// Init from local
+DB=loadLocal();
+
+function saveDB(){saveLocal();syncToFirestore();}
+
+// ═══ MOTOR API ═══
+const MOTOR_API_KEY='e34cgmwjymo55fwgyyoosz41owomx49a';
+
+// ═══ PARTS DATABASE ═══
+const CAT_ICONS={Motor:'🔧',Bremser:'🛑',Affjedring:'🔩',Styretøj:'🎯',Elektrisk:'⚡',Lys:'💡',Udstødning:'💨',Køling:'❄️',Brændstof:'⛽',Karrosseri:'🚗',Interiør:'💺',Hjul:'🛞',Arbejde:'🔨'};
+const PARTS_DB={"dele":{"Motor":["Cylinderblok","Gløderør","Intercooler","Knastaksel","Krumtapaksel","Luftfilter","Oliefilter","Oliepumpe","Plejlstang","Stempel","Tandrem","Topstykke","Turbo","Tændrør","Vandpumpe","Ventil"],"Bremser":["ABS-sensor","Bremsekaliber","Bremseklods","Bremserør","Bremseskive","Bremseslange","Hovedbremsecylinder"],"Affjedring":["Bærearm","Bærekugle","Fjeder","Hjulleje","Silentblok","Stabilisator","Støddæmper"],"Styretøj":["Ratstamme","Servopumpe","Sporstang","Styrekugle","Styretøjshus"],"Elektrisk":["Batteri","Generator","Kontrolenhed","Ledningsnet","Relæ","Sensor","Sikring","Starter"],"Lys":["Baglygte","Blinklys","Forlygte","Nummerpladelys","Pære","Tågelygte"],"Udstødning":["Katalysator","Lambda-sonde","Lyddæmper","Partikelfilter","Udstødningsrør"],"Køling":["Ekspansionsbeholder","Køler","Kølerblæser","Køleslange","Termostat"],"Brændstof":["Brændstofpumpe","Brændstoftank","Indsprøjtningsdyse","Trykregulator"],"Karrosseri":["Bagklap","Dør","Forrude","Kofanger","Motorhjelm","Sidespejl"],"Interiør":["Airbag","Instrumentbræt","Rat","Sikkerhedssele","Sæde"],"Hjul":["Dæk","Fælg","Hjulbolt","Slidindikator","Ventil"]},"termer":{"Arbejde":["4-hjulsudmåling","AC-service","Afbalancering","Batteritest","Bremsetest","Bremseudskiftning","Diagnosetest","Dækafbalancering","Dækmontering","Fejlkodelæsning","Fejlsøgning","Gearkassereparation","Hjuludmåling","Justering af forlygter","Kalibrering","Koblingsudskiftning","Kompressionstest","Lækagesøgning","Motorrenovering","Olieskift","Partikelfilterrens","Rustreparation","Softwareopdatering","Synsklargøring","Trykprøvning","Turboinspektion","Udluftning af bremser","Udskiftning af tandrem","Undervognsbehandling"]}};
+const COMPANY={name:'Servicestationen',sub:'Autoværksted & Bilpleje',addr:'Glentevej 45',city:'4600 Køge',email:'info@servicestationen.dk',tel:'22 35 22 35'};
+
+let wizardStep=0,editingId=null,selectedCat=null;
+let draft={customerType:'private',customer:{},vehicle:{},lines:[],notes:'',status:'draft'};
+function genId(){return Date.now().toString(36)+Math.random().toString(36).slice(2,6);}
+
+go('dashboard');
+
+function go(s){
+document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('active',b.dataset.s===s));
+const c=document.getElementById('content');
+if(s==='newReport'){editingId=null;wizardStep=0;selectedCat=null;draft={customerType:'private',customer:{},vehicle:{},lines:[],notes:'',status:'draft'};renderWiz(c);return;}
+if(s==='dashboard')renderDash(c);else if(s==='customers')renderCusts(c);else if(s==='vehicles')renderVehs(c);else if(s==='reports')renderReps(c);
+}
+
+// ═══ DASHBOARD ═══
+function renderDash(c){
+const mo=new Date().toISOString().slice(0,7),mR=DB.reports.filter(r=>r.date?.startsWith(mo)),rev=mR.reduce((s,r)=>s+calcT(r),0);
+c.innerHTML=`<div class="section"><div class="stats">
+<div class="stat-card"><div class="val">${DB.reports.length}</div><div class="lbl">Rapporter</div></div>
+<div class="stat-card"><div class="val">${DB.customers.length}</div><div class="lbl">Kunder</div></div>
+<div class="stat-card"><div class="val">${DB.reports.filter(r=>r.status==='approved').length}</div><div class="lbl">Godkendte</div></div>
+<div class="stat-card"><div class="val mono">${fmt(rev)}</div><div class="lbl">Denne måned</div></div>
+</div><div class="card"><h2>Seneste rapporter</h2>
+${DB.reports.length===0?'<div class="empty">Ingen rapporter endnu</div>':
+`<table class="tbl"><thead><tr><th>Dato</th><th>Plade</th><th>Kunde</th><th>Beløb</th><th>Status</th><th></th></tr></thead><tbody>
+${DB.reports.slice(-8).reverse().map(r=>`<tr><td>${r.date||'-'}</td><td class="mono">${r.vehicle?.plate||'-'}</td>
+<td>${r.customer?.name||'-'}</td><td class="mono">${fmt(calcT(r))}</td>
+<td><span class="tag ${r.status==='approved'?'tag-green2':'tag-gold'}">${r.status==='approved'?'Godkendt':'Kladde'}</span></td>
+<td style="white-space:nowrap"><button class="btn btn-outline btn-sm" onclick="viewR('${r.id}')">Vis</button>
+<button class="btn btn-outline btn-sm" onclick="editR('${r.id}')" style="margin-left:3px">✏️</button></td></tr>`).join('')}</tbody></table>`}</div></div>`;
+}
+
+// ═══ WIZARD ═══
+function renderWiz(c){
+const steps=['Kunde','Bil','Reparation','Oversigt'];
+c.innerHTML=`<div class="section">${editingId?`<div style="background:rgba(245,192,13,.06);border:1px solid rgba(245,192,13,.25);border-radius:10px;padding:9px 14px;margin-bottom:12px;font-size:.76rem;color:var(--gold)">✏️ Redigerer: <strong>${draft.reportNr||''}</strong></div>`:''}
+<div class="wizard-steps">${steps.map((s,i)=>`<div class="step-dot ${i<wizardStep?'done':''} ${i===wizardStep?'active':''}"><div class="dot">${i<wizardStep?'✓':i+1}</div><span>${s}</span></div>`).join('')}</div>
+<div id="wb"></div></div>`;rStep();
+}
+function rStep(){const b=document.getElementById('wb');if(!b)return;[rS0,rS1,rS2,rS3][wizardStep](b);}
+
+function rS0(b){const isF=draft.customerType==='company';
+b.innerHTML=`<div class="card"><h2>Kundeinformation</h2>
+<div class="toggle-row"><span style="font-size:.8rem;color:var(--text2)">Privat</span>
+<div class="toggle ${isF?'on':''}" onclick="draft.customerType=draft.customerType==='private'?'company':'private';rStep()"></div>
+<span style="font-size:.8rem;color:var(--text2)">Firma (CVR)</span></div>
+${isF?`<div class="form-row"><div class="form-group"><label>CVR-nummer</label><div style="display:flex;gap:6px"><input id="f_cvr" placeholder="12345678" value="${draft.customer.cvr||''}" style="flex:1"><button class="btn btn-gold btn-sm" onclick="lCVR()">Slå op</button></div></div></div>
+<div class="form-row"><div class="form-group"><label>Firmanavn</label><input id="f_name" value="${draft.customer.name||''}"></div><div class="form-group"><label>Adresse</label><input id="f_addr" value="${draft.customer.address||''}"></div></div>`:''}
+<div class="form-row"><div class="form-group"><label>${isF?'Kontaktperson':'Navn'}</label><input id="f_contact" value="${draft.customer.contact||draft.customer.name||''}"></div>
+<div class="form-group"><label>Telefon</label><input id="f_phone" value="${draft.customer.phone||''}"></div></div>
+<div class="form-row full"><div class="form-group"><label>Email</label><input id="f_email" type="email" value="${draft.customer.email||''}"></div></div>
+${DB.customers.length?`<div style="margin-top:8px"><label style="font-size:.68rem;color:var(--text3)">VÆLG EKSISTERENDE</label>
+<select id="f_ex" onchange="pCust()" style="margin-top:4px;width:100%;background:var(--input-bg);border:1px solid var(--border);color:var(--text);padding:8px;border-radius:6px"><option value="">— Vælg —</option>${DB.customers.map(c=>`<option value="${c.id}">${c.name}${c.cvr?' ('+c.cvr+')':''}</option>`).join('')}</select></div>`:''}
+</div><div class="btn-row"><div style="flex:1"></div><button class="btn btn-gold" onclick="wN()">Næste →</button></div>`;
+}
+
+function pCust(){const s=document.getElementById('f_ex');if(!s.value)return;const cu=DB.customers.find(c=>c.id===s.value);if(!cu)return;draft.customer={...cu};draft.customerType=cu.cvr?'company':'private';rStep();}
+async function lCVR(){const cvr=document.getElementById('f_cvr').value.replace(/\s/g,'');if(cvr.length!==8){alert('CVR: 8 cifre');return;}
+try{const r=await fetch(`https://cvrapi.dk/api?search=${cvr}&country=dk`,{headers:{'User-Agent':'Servicestationen'}});const d=await r.json();
+if(d.name){document.getElementById('f_name').value=d.name;document.getElementById('f_addr').value=`${d.address||''}, ${d.zipcode||''} ${d.city||''}`;
+draft.customer.cvr=cvr;draft.customer.name=d.name;draft.customer.address=document.getElementById('f_addr').value;}else alert('Ikke fundet');}catch(e){alert('CVR fejlede');}}
+
+function rS1(b){
+b.innerHTML=`<div class="card"><h2>Køretøj</h2>
+<div class="form-row"><div class="form-group"><label>Nummerplade</label><div style="display:flex;gap:6px"><input id="v_p" placeholder="AB 12 345" value="${draft.vehicle.plate||''}" style="flex:1;text-transform:uppercase;font-weight:700;font-size:1rem;letter-spacing:1px" maxlength="10">
+<button class="btn btn-gold btn-sm" id="pBtn" onclick="lPlate()">🔍 Slå op</button></div></div>
+<div class="form-group"><label>Stelnr (VIN)</label><input id="v_vin" value="${draft.vehicle.vin||''}"></div></div>
+<div class="form-row triple"><div class="form-group"><label>Mærke</label><input id="v_mk" value="${draft.vehicle.make||''}"></div>
+<div class="form-group"><label>Model</label><input id="v_md" value="${draft.vehicle.model||''}"></div>
+<div class="form-group"><label>Årgang</label><input id="v_yr" type="number" value="${draft.vehicle.year||''}"></div></div>
+<div class="form-row"><div class="form-group"><label>Brændstof</label><select id="v_fu">${['','Benzin','Diesel','El','Hybrid','Plug-in Hybrid'].map(f=>`<option ${draft.vehicle.fuel===f?'selected':''}>${f||'Vælg...'}</option>`).join('')}</select></div>
+<div class="form-group"><label>KM-stand</label><input id="v_km" type="number" value="${draft.vehicle.km||''}"></div></div>
+<div id="pRes"></div>
+</div><div class="btn-row"><button class="btn btn-outline" onclick="wB()">← Tilbage</button><div style="flex:1"></div><button class="btn btn-gold" onclick="wN()">Næste →</button></div>`;
+}
+
+async function lPlate(){const plate=(document.getElementById('v_p')?.value||'').replace(/\s/g,'').toUpperCase();if(!plate){alert('Indtast plade');return;}
+const btn=document.getElementById('pBtn');btn.innerHTML='<span class="spinner"></span>';btn.disabled=true;
+try{const r=await fetch(`https://v1.motorapi.dk/vehicles/${plate}`,{headers:{'X-AUTH-TOKEN':MOTOR_API_KEY,'Accept':'application/json'}});
+if(!r.ok)throw new Error(r.status);const d=await r.json();
+document.getElementById('v_mk').value=d.make||'';document.getElementById('v_md').value=d.model_type||d.model||'';
+document.getElementById('v_yr').value=d.model_year||d.first_registration?.substring(0,4)||'';
+document.getElementById('v_vin').value=d.vin||'';
+const fm={'Benzin':'Benzin','Diesel':'Diesel','El':'El','Hybrid':'Hybrid','PlugInHybrid':'Plug-in Hybrid'};
+document.getElementById('v_fu').value=fm[d.fuel_type]||d.fuel_type||'';document.getElementById('v_km').value=d.mileage||'';
+const i=[];if(d.color)i.push('Farve: '+d.color);if(d.last_inspection_date)i.push('Syn: '+d.last_inspection_date);if(d.last_inspection_result)i.push(d.last_inspection_result);
+document.getElementById('pRes').innerHTML=`<div style="background:rgba(52,211,153,.06);border:1px solid rgba(52,211,153,.15);border-radius:8px;padding:9px;margin-top:8px;font-size:.72rem;color:var(--green)">✓ MotorAPI${i.length?' · <span style="color:var(--text2)">'+i.join(' · ')+'</span>':''}</div>`;
+}catch(e){document.getElementById('pRes').innerHTML=`<div style="background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.15);border-radius:8px;padding:9px;margin-top:8px;font-size:.72rem;color:var(--red)">Fejl (${e.message})</div>`;}
+finally{btn.innerHTML='🔍 Slå op';btn.disabled=false;}}
+
+function rS2(b){const allC=[...Object.keys(PARTS_DB.dele),...Object.keys(PARTS_DB.termer)];
+b.innerHTML=`<div class="card"><h2>Vælg kategori & dele</h2>
+<div class="cat-grid">${allC.map(cat=>{const items=PARTS_DB.dele[cat]||PARTS_DB.termer[cat]||[];
+const sel=draft.lines.filter(l=>(PARTS_DB.dele[cat]||[]).includes(l.desc)||(PARTS_DB.termer[cat]||[]).includes(l.desc)).length;
+return`<div class="cat-card ${selectedCat===cat?'active':''}" onclick="sCat('${cat}')"><span class="cat-icon">${CAT_ICONS[cat]||'🔧'}</span><span class="cat-name">${cat}</span><span class="cat-count">${sel?sel+'/':''}${items.length}</span></div>`;}).join('')}</div>
+${selectedCat?rPP():''}</div>
+<div class="card"><h2>Linjer <span class="badge">${draft.lines.length}</span></h2>
+<div id="lBox">${draft.lines.map((l,i)=>rLn(l,i)).join('')}</div>
+<div class="add-btns">
+<button class="add-btn" onclick="aLn('del')"><span class="ad" style="background:var(--blue)"></span>Reservedel</button>
+<button class="add-btn" onclick="aLn('arbejde')"><span class="ad" style="background:var(--purple)"></span>Arbejde</button>
+<button class="add-btn" onclick="aLn('arblon')"><span class="ad" style="background:var(--orange)"></span>Arbejdsløn</button>
+<button class="add-btn" onclick="aLn('service')"><span class="ad" style="background:var(--green)"></span>Service</button>
+<button class="add-btn" onclick="aLn('andet')"><span class="ad" style="background:var(--text3)"></span>Andet</button></div>
+<div class="form-row full" style="margin-top:12px"><div class="form-group"><label>Bemærkninger</label><textarea id="rN" placeholder="Bemærkninger...">${draft.notes||''}</textarea></div></div>
+</div><div class="btn-row"><button class="btn btn-outline" onclick="wB()">← Tilbage</button><div style="flex:1"></div><button class="btn btn-gold" onclick="wN()">Oversigt →</button></div>`;
+}
+
+function sCat(c){selectedCat=selectedCat===c?null:c;sLns();rS2(document.getElementById('wb'));}
+function rPP(){const items=PARTS_DB.dele[selectedCat]||PARTS_DB.termer[selectedCat]||[];const isW=!!PARTS_DB.termer[selectedCat];
+return`<div class="parts-panel"><input class="parts-search" placeholder="🔍 Søg i ${selectedCat}..." oninput="fP(this.value)">
+<div class="parts-list" id="pL">${items.map(p=>`<span class="part-chip ${draft.lines.some(l=>l.desc===p)?'selected':''}" onclick="tP('${esc(p)}','${isW?'arbejde':'del'}')">${p}</span>`).join('')}</div></div>`;}
+function fP(q){const list=document.getElementById('pL');if(!list)return;const items=PARTS_DB.dele[selectedCat]||PARTS_DB.termer[selectedCat]||[];const isW=!!PARTS_DB.termer[selectedCat];
+const f=q?items.filter(p=>p.toLowerCase().includes(q.toLowerCase())):items;
+list.innerHTML=f.map(p=>`<span class="part-chip ${draft.lines.some(l=>l.desc===p)?'selected':''}" onclick="tP('${esc(p)}','${isW?'arbejde':'del'}')">${p}</span>`).join('');}
+function tP(n,t){sLns();const i=draft.lines.findIndex(l=>l.desc===n);if(i>=0)draft.lines.splice(i,1);else draft.lines.push({desc:n,qty:1,price:0,type:t});rS2(document.getElementById('wb'));}
+
+function rLn(l,i){const lb={del:'Reservedel',arbejde:'Arbejde',arblon:'Arbejdsløn',service:'Service',andet:'Andet'};const t=l.type||'del';
+if(t==='arblon')return`<div class="line-group" data-i="${i}"><span class="line-type-tag t-arblon">${lb[t]}</span><div class="arblon-fields">
+<input class="li-d" value="${l.desc||'Arbejdsløn'}" placeholder="Beskrivelse"><div><input class="li-h" type="number" min="0" step="0.25" value="${l.hours||0}" placeholder="Timer" onchange="cArb(${i})"><div class="arblon-label">Timer</div></div>
+<div><input class="li-r" type="number" min="0" value="${l.rate||0}" placeholder="Sats" onchange="cArb(${i})"><div class="arblon-label">Kr/time</div></div>
+<div><input class="li-p" type="number" value="${l.price||0}" readonly style="color:var(--gold);font-weight:600"><div class="arblon-label">Total</div></div>
+<button class="line-remove" onclick="dLn(${i})">✕</button></div></div>`;
+return`<div class="line-group" data-i="${i}"><span class="line-type-tag t-${t}">${lb[t]||t}</span><div class="line-fields">
+<input class="li-d" value="${l.desc}" placeholder="Beskrivelse"><input class="li-q" type="number" min="1" value="${l.qty||1}" placeholder="Antal">
+<input class="li-p" type="number" min="0" step="0.01" value="${l.price||0}" placeholder="Kr."><button class="line-remove" onclick="dLn(${i})">✕</button></div></div>`;}
+
+function cArb(i){const el=document.querySelectorAll('.line-group')[i];if(!el)return;const h=Number(el.querySelector('.li-h')?.value)||0;const r=Number(el.querySelector('.li-r')?.value)||0;el.querySelector('.li-p').value=h*r;draft.lines[i].hours=h;draft.lines[i].rate=r;draft.lines[i].price=h*r;draft.lines[i].qty=1;}
+function aLn(t){sLns();draft.lines.push(t==='arblon'?{desc:'Arbejdsløn',qty:1,price:0,type:'arblon',hours:0,rate:0}:{desc:'',qty:1,price:0,type:t});rS2(document.getElementById('wb'));}
+function dLn(i){sLns();draft.lines.splice(i,1);rS2(document.getElementById('wb'));}
+function sLns(){document.querySelectorAll('.line-group').forEach((el,i)=>{if(!draft.lines[i])return;draft.lines[i].desc=el.querySelector('.li-d')?.value||draft.lines[i].desc;
+if(draft.lines[i].type==='arblon'){draft.lines[i].hours=Number(el.querySelector('.li-h')?.value)||0;draft.lines[i].rate=Number(el.querySelector('.li-r')?.value)||0;draft.lines[i].price=Number(el.querySelector('.li-p')?.value)||0;draft.lines[i].qty=1;}
+else{draft.lines[i].qty=Number(el.querySelector('.li-q')?.value)||1;draft.lines[i].price=Number(el.querySelector('.li-p')?.value)||0;}});draft.notes=document.getElementById('rN')?.value||draft.notes;}
+
+function rS3(b){sLns();const gr=gLn(draft.lines);const sub=draft.lines.reduce((a,l)=>a+(l.type==='arblon'?l.price:l.qty*l.price),0);const moms=sub*.25;
+b.innerHTML=`<div class="card"><h2>Oversigt</h2>
+<div class="form-row"><div class="form-group"><label>Kunde</label><div style="padding:8px;color:var(--text)">${draft.customer.name||'—'}${draft.customer.cvr?' (CVR: '+draft.customer.cvr+')':''}</div></div>
+<div class="form-group"><label>Bil</label><div style="padding:8px;color:var(--text)" class="mono">${draft.vehicle.plate||'—'} ${draft.vehicle.make||''} ${draft.vehicle.model||''}</div></div></div>
+${rGT(gr)}
+<div style="text-align:right;margin-top:12px;font-size:.8rem;color:var(--text2)">Subtotal: <span class="mono">${fmt(sub)}</span><br>Moms (25%): <span class="mono">${fmt(moms)}</span></div>
+<div style="text-align:right;font-size:1.1rem;font-weight:700;color:var(--gold);margin-top:4px">Total: <span class="mono">${fmt(sub+moms)}</span></div>
+${draft.notes?`<div style="margin-top:8px;padding:8px;background:var(--bg3);border-radius:8px;font-size:.75rem;color:var(--text2)"><strong>Note:</strong> ${draft.notes}</div>`:''}</div>
+<div class="btn-row"><button class="btn btn-outline" onclick="wB()">← Tilbage</button><div style="flex:1"></div><button class="btn btn-outline" onclick="oPrev()">👁 Vis</button>
+<button class="btn btn-gold" onclick="saveR()">💾 ${editingId?'Opdater':'Gem'}</button></div>`;}
+
+function rGT(gr){const lb={del:'Reservedele',arbejde:'Arbejde',arblon:'Arbejdsløn',service:'Service',andet:'Andet'};const co={del:'var(--blue)',arbejde:'var(--purple)',arblon:'var(--orange)',service:'var(--green)',andet:'var(--text3)'};
+return Object.entries(gr).map(([t,ls])=>`<div style="margin-top:10px"><div style="font-size:.7rem;color:${co[t]};text-transform:uppercase;font-weight:700;letter-spacing:.5px;margin-bottom:5px;display:flex;align-items:center;gap:5px"><span style="width:7px;height:7px;border-radius:50%;background:${co[t]}"></span>${lb[t]||t}</div>
+<table class="tbl"><thead><tr><th>Beskrivelse</th>${t==='arblon'?'<th>Timer</th><th>Kr/t</th>':'<th>Antal</th><th>Pris</th>'}<th>Total</th></tr></thead><tbody>
+${ls.map(l=>t==='arblon'?`<tr><td>${l.desc}</td><td>${l.hours||0}</td><td class="mono">${fmt(l.rate||0)}</td><td class="mono">${fmt(l.price)}</td></tr>`:
+`<tr><td>${l.desc}</td><td>${l.qty}</td><td class="mono">${fmt(l.price)}</td><td class="mono">${fmt(l.qty*l.price)}</td></tr>`).join('')}</tbody></table></div>`).join('');}
+
+function wN(){if(wizardStep===0){cS0();if(!draft.customer.name&&!draft.customer.contact){alert('Udfyld kunde');return;}}
+if(wizardStep===1){cS1();if(!draft.vehicle.plate){alert('Udfyld plade');return;}}if(wizardStep===2)sLns();wizardStep=Math.min(wizardStep+1,3);renderWiz(document.getElementById('content'));}
+function wB(){if(!wizardStep)return;if(wizardStep===2)sLns();wizardStep--;renderWiz(document.getElementById('content'));}
+function cS0(){const isF=draft.customerType==='company';if(isF){draft.customer.cvr=document.getElementById('f_cvr')?.value||draft.customer.cvr;draft.customer.name=document.getElementById('f_name')?.value||draft.customer.name;draft.customer.address=document.getElementById('f_addr')?.value||draft.customer.address;}
+const c=document.getElementById('f_contact')?.value||'';if(!isF)draft.customer.name=c;draft.customer.contact=c;draft.customer.phone=document.getElementById('f_phone')?.value||'';draft.customer.email=document.getElementById('f_email')?.value||'';}
+function cS1(){draft.vehicle.plate=(document.getElementById('v_p')?.value||'').toUpperCase().replace(/\s/g,'');draft.vehicle.vin=document.getElementById('v_vin')?.value||'';draft.vehicle.make=document.getElementById('v_mk')?.value||'';draft.vehicle.model=document.getElementById('v_md')?.value||'';draft.vehicle.year=document.getElementById('v_yr')?.value||'';draft.vehicle.fuel=document.getElementById('v_fu')?.value||'';draft.vehicle.km=document.getElementById('v_km')?.value||'';}
+
+function saveR(){
+if(editingId){const idx=DB.reports.findIndex(r=>r.id===editingId);if(idx>=0){draft.id=editingId;draft.date=DB.reports[idx].date;draft.reportNr=DB.reports[idx].reportNr;draft.updatedAt=new Date().toISOString();DB.reports[idx]=draft;}}
+else{draft.id=genId();draft.date=new Date().toISOString().slice(0,10);draft.reportNr='SR-'+(DB.reports.length+1).toString().padStart(4,'0');
+let ex=DB.customers.find(c=>c.name===draft.customer.name||(c.cvr&&c.cvr===draft.customer.cvr));
+if(!ex)DB.customers.push({id:genId(),...draft.customer,plate:draft.vehicle.plate});else{ex.phone=draft.customer.phone||ex.phone;ex.email=draft.customer.email||ex.email;ex.plate=draft.vehicle.plate||ex.plate;}
+DB.reports.push(draft);}
+saveDB();alert(`${editingId?'Opdateret':'Gemt'}! ${draft.reportNr}`);editingId=null;go('dashboard');}
+
+function editR(id){const r=DB.reports.find(x=>x.id===id);if(!r)return;editingId=id;draft=JSON.parse(JSON.stringify(r));wizardStep=0;selectedCat=null;
+document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('active',b.dataset.s==='newReport'));renderWiz(document.getElementById('content'));}
+
+// ═══ PREVIEW ═══
+function oPrev(){if(wizardStep===2)sLns();const sub=draft.lines.reduce((a,l)=>a+(l.type==='arblon'?l.price:l.qty*l.price),0);
+document.getElementById('previewContent').innerHTML=bPrev(draft,sub);document.getElementById('previewOverlay').classList.add('show');}
+function closePreview(){document.getElementById('previewOverlay').classList.remove('show');}
+function approveReport(){draft.status='approved';const ex=DB.reports.find(r=>r.id===draft.id);if(ex){ex.status='approved';saveDB();}oPrev();}
+
+function bPrev(r,sub){const moms=sub*.25,total=sub+moms,gr=gLn(r.lines);
+const stamp=r.status==='approved'?'<span style="display:inline-block;padding:3px 12px;border:3px solid #34d399;color:#34d399;border-radius:8px;font-weight:700;font-size:14px;transform:rotate(-5deg)">✓ GODKENDT</span>':'<span style="display:inline-block;padding:3px 12px;border:3px solid #c9a00a;color:#c9a00a;border-radius:8px;font-weight:700;font-size:12px;transform:rotate(-5deg)">AFVENTER</span>';
+const tL={del:'RESERVEDELE',arbejde:'ARBEJDE',arblon:'ARBEJDSLØN',service:'SERVICE',andet:'ANDET'};
+let lH='';for(const[t,ls]of Object.entries(gr)){const isA=t==='arblon';
+lH+=`<table><tr><th colspan="4" style="background:#f5c00d;color:#111;font-size:9px;text-transform:uppercase;letter-spacing:1px">${tL[t]||t}</th></tr>
+<tr><th>Beskrivelse</th><th style="width:50px">${isA?'Timer':'Antal'}</th><th style="width:70px">${isA?'Kr/t':'Pris'}</th><th style="width:70px">Total</th></tr>
+${ls.map(l=>isA?`<tr><td>${l.desc}</td><td>${l.hours||0}</td><td style="font-family:monospace">${fN(l.rate||0)}</td><td style="font-family:monospace">${fN(l.price)}</td></tr>`:
+`<tr><td>${l.desc}</td><td>${l.qty}</td><td style="font-family:monospace">${fN(l.price)}</td><td style="font-family:monospace">${fN(l.qty*l.price)}</td></tr>`).join('')}</table>`;}
+return`<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px"><img src="${LOGO_SRC}" style="height:38px;border-radius:6px" alt=""><div style="text-align:right;font-size:9px;color:#555"><strong>${COMPANY.name}</strong><br>${COMPANY.sub}<br>${COMPANY.addr}<br>${COMPANY.city}<br>${COMPANY.tel}<br>${COMPANY.email}</div></div>
+<hr style="border:none;border-top:2px solid #f5c00d;margin:8px 0">
+<div style="display:flex;justify-content:space-between;align-items:center"><div><h3 style="font-size:13px">Reparationsrapport</h3><p style="font-size:9px;color:#666">Nr: ${r.reportNr||'—'} · ${r.date||new Date().toISOString().slice(0,10)}</p></div>${stamp}</div>
+<table style="margin-top:10px"><tr><th colspan="2" style="background:#f5c00d;color:#111;font-size:9px">KUNDE</th></tr>
+<tr><td><strong>Navn</strong></td><td>${r.customer.name||'—'}</td></tr>${r.customer.cvr?`<tr><td><strong>CVR</strong></td><td>${r.customer.cvr}</td></tr>`:''}
+${r.customer.contact&&r.customer.contact!==r.customer.name?`<tr><td><strong>Kontakt</strong></td><td>${r.customer.contact}</td></tr>`:''}
+<tr><td><strong>Tlf</strong></td><td>${r.customer.phone||'—'}</td></tr><tr><td><strong>Email</strong></td><td>${r.customer.email||'—'}</td></tr></table>
+<table style="margin-top:6px"><tr><th colspan="2" style="background:#f5c00d;color:#111;font-size:9px">KØRETØJ</th></tr>
+<tr><td><strong>Plade</strong></td><td style="font-family:monospace;font-weight:700;font-size:13px">${r.vehicle.plate||'—'}</td></tr>
+<tr><td><strong>Mærke/Model</strong></td><td>${r.vehicle.make||''} ${r.vehicle.model||''}</td></tr><tr><td><strong>Årgang</strong></td><td>${r.vehicle.year||'—'}</td></tr>
+<tr><td><strong>Brændstof</strong></td><td>${r.vehicle.fuel||'—'}</td></tr><tr><td><strong>KM</strong></td><td>${r.vehicle.km||'—'}</td></tr>
+${r.vehicle.vin?`<tr><td><strong>VIN</strong></td><td style="font-family:monospace;font-size:9px">${r.vehicle.vin}</td></tr>`:''}</table>
+${lH}<div style="text-align:right;margin-top:8px;font-size:10px">Subtotal: ${fN(sub)}<br>Moms: ${fN(moms)}</div>
+<div style="text-align:right;font-size:14px;font-weight:700;margin-top:2px">Total: ${fN(total)}</div>
+${r.notes?`<div style="margin-top:6px;padding:6px;background:#f9f9f9;border-radius:6px;font-size:9px"><strong>Note:</strong> ${r.notes}</div>`:''}`;}
+
+// ═══ PDF + SHARE ═══
+async function sharePDF(){const r=draft,sub=r.lines.reduce((a,l)=>a+(l.type==='arblon'?l.price:l.qty*l.price),0),moms=sub*.25,total=sub+moms;
+const{jsPDF}=window.jspdf;const doc=new jsPDF({unit:'mm',format:'a4'});const pw=210,mx=15;let y=15;
+try{doc.addImage(LOGO_SRC,'JPEG',mx,y,18,18);}catch(e){}
+doc.setFontSize(10);doc.setFont('helvetica','bold');doc.text(COMPANY.name,pw-mx,y+4,{align:'right'});
+doc.setFont('helvetica','normal');doc.setFontSize(7);doc.text([COMPANY.sub,COMPANY.addr,COMPANY.city,COMPANY.tel,COMPANY.email],pw-mx,y+9,{align:'right',lineHeightFactor:1.4});
+y+=24;doc.setDrawColor(245,192,13);doc.setLineWidth(.7);doc.line(mx,y,pw-mx,y);y+=5;
+doc.setFontSize(12);doc.setFont('helvetica','bold');doc.text('Reparationsrapport',mx,y);
+doc.setFontSize(7);doc.setFont('helvetica','normal');doc.text(`Nr: ${r.reportNr||'—'} · ${r.date||new Date().toISOString().slice(0,10)}`,mx,y+4.5);
+const sC=r.status==='approved'?[52,211,153]:[201,160,10];doc.setTextColor(...sC);doc.setFontSize(10);doc.setFont('helvetica','bold');
+doc.text(r.status==='approved'?'GODKENDT':'AFVENTER',pw-mx,y,{align:'right'});doc.setTextColor(0);y+=11;
+function sH(t){doc.setFillColor(245,192,13);doc.rect(mx,y,pw-2*mx,5,'F');doc.setFontSize(6.5);doc.setFont('helvetica','bold');doc.setTextColor(17,17,17);doc.text(t,mx+2,y+3.5);doc.setTextColor(0);y+=7;}
+function iR(l,v){doc.setFontSize(7);doc.setFont('helvetica','bold');doc.text(l,mx+2,y);doc.setFont('helvetica','normal');doc.text(String(v||'—'),mx+38,y);y+=4.2;}
+sH('KUNDE');iR('Navn',r.customer.name);if(r.customer.cvr)iR('CVR',r.customer.cvr);iR('Telefon',r.customer.phone);iR('Email',r.customer.email);y+=2;
+sH('KØRETØJ');iR('Plade',r.vehicle.plate);iR('Mærke/Model',`${r.vehicle.make||''} ${r.vehicle.model||''}`);iR('Årgang',r.vehicle.year);iR('Brændstof',r.vehicle.fuel);iR('KM',r.vehicle.km);if(r.vehicle.vin)iR('VIN',r.vehicle.vin);y+=2;
+const gr=gLn(r.lines);const tL={del:'RESERVEDELE',arbejde:'ARBEJDE',arblon:'ARBEJDSLØN',service:'SERVICE',andet:'ANDET'};
+for(const[t,ls]of Object.entries(gr)){if(y>255){doc.addPage();y=15;}sH(tL[t]||t);const isA=t==='arblon';
+doc.setFontSize(6);doc.setFont('helvetica','bold');doc.text('Beskrivelse',mx+2,y);doc.text(isA?'Timer':'Antal',mx+95,y);doc.text(isA?'Kr/t':'Pris',mx+114,y);doc.text('Total',mx+145,y);y+=1.5;doc.setDrawColor(200);doc.line(mx,y,pw-mx,y);y+=3.5;doc.setFont('helvetica','normal');
+ls.forEach(l=>{if(y>275){doc.addPage();y=15;}doc.text(l.desc.substring(0,55),mx+2,y);
+if(isA){doc.text(String(l.hours||0),mx+98,y);doc.text(fN(l.rate||0),mx+112,y);}else{doc.text(String(l.qty),mx+98,y);doc.text(fN(l.price),mx+112,y);}
+doc.text(fN(isA?l.price:l.qty*l.price),mx+145,y);y+=4.2;});y+=2;}
+if(y>260){doc.addPage();y=15;}doc.setDrawColor(200);doc.line(mx+90,y,pw-mx,y);y+=4.5;
+doc.setFontSize(7);doc.text('Subtotal:',mx+105,y);doc.text(fN(sub),pw-mx,y,{align:'right'});y+=4;
+doc.text('Moms (25%):',mx+105,y);doc.text(fN(moms),pw-mx,y,{align:'right'});y+=4.5;
+doc.setFontSize(10);doc.setFont('helvetica','bold');doc.text('Total inkl. moms:',mx+82,y);doc.text(fN(total),pw-mx,y,{align:'right'});
+if(r.notes){y+=7;if(y>268){doc.addPage();y=15;}doc.setFontSize(6.5);doc.setFont('helvetica','bold');doc.text('Bemærkninger:',mx,y);y+=3.5;doc.setFont('helvetica','normal');doc.text(doc.splitTextToSize(r.notes,pw-2*mx),mx,y);}
+const blob=doc.output('blob');const fn=`Rapport_${r.reportNr||'SR'}_${r.vehicle.plate||'bil'}.pdf`;const file=new File([blob],fn,{type:'application/pdf'});
+if(navigator.canShare&&navigator.canShare({files:[file]})){try{await navigator.share({files:[file],title:`Rapport ${r.reportNr||''}`,text:`${r.vehicle.make||''} ${r.vehicle.model||''} (${r.vehicle.plate||''})`});}catch(e){if(e.name!=='AbortError')doc.save(fn);}}else doc.save(fn);}
+
+// ═══ OTHER VIEWS ═══
+function renderCusts(c){c.innerHTML=`<div class="section"><div class="card"><h2>Kunder <span class="badge">${DB.customers.length}</span></h2>
+<div class="search-bar"><input placeholder="Søg kunde..." oninput="fC(this.value)"></div><div id="cL">${cT(DB.customers)}</div></div></div>`;}
+function cT(l){if(!l.length)return'<div class="empty">Ingen kunder</div>';return`<table class="tbl"><thead><tr><th>Navn</th><th>CVR</th><th>Tlf</th><th>Email</th></tr></thead><tbody>${l.map(c=>`<tr><td>${c.name||'—'}</td><td class="mono">${c.cvr||'—'}</td><td>${c.phone||'—'}</td><td>${c.email||'—'}</td></tr>`).join('')}</tbody></table>`;}
+function fC(q){document.getElementById('cL').innerHTML=cT(DB.customers.filter(c=>JSON.stringify(c).toLowerCase().includes(q.toLowerCase())));}
+
+function renderVehs(c){const pl=[...new Set(DB.reports.map(r=>r.vehicle?.plate).filter(Boolean))];
+c.innerHTML=`<div class="section"><div class="card"><h2>Biler <span class="badge">${pl.length}</span></h2>
+<div class="search-bar"><input id="vS" placeholder="Søg plade..." oninput="sV()"></div><div id="vL">${vL(pl)}</div></div></div>`;}
+function vL(pl){if(!pl.length)return'<div class="empty">Ingen biler</div>';return pl.map(p=>{const rps=DB.reports.filter(r=>r.vehicle?.plate===p);const v=rps[rps.length-1]?.vehicle||{};
+return`<div class="card" style="padding:12px"><div style="display:flex;justify-content:space-between;align-items:center">
+<div><span class="mono" style="font-size:1rem;font-weight:700;color:var(--gold)">${p}</span> <span style="color:var(--text2);font-size:.78rem">${v.make||''} ${v.model||''} ${v.year||''}</span></div>
+<span class="tag tag-gold">${rps.length} rpt</span></div>
+<table class="tbl" style="margin-top:6px"><thead><tr><th>Dato</th><th>Arbejde</th><th>Beløb</th><th></th></tr></thead><tbody>
+${rps.map(r=>`<tr><td>${r.date||'—'}</td><td>${(r.lines||[]).map(l=>l.desc).filter(Boolean).slice(0,3).join(', ')||'—'}</td>
+<td class="mono">${fmt(calcT(r))}</td><td style="white-space:nowrap"><button class="btn btn-outline btn-sm" onclick="viewR('${r.id}')">Vis</button>
+<button class="btn btn-outline btn-sm" onclick="editR('${r.id}')" style="margin-left:3px">✏️</button></td></tr>`).join('')}</tbody></table></div>`;}).join('');}
+function sV(){const q=(document.getElementById('vS')?.value||'').toUpperCase();let pl=[...new Set(DB.reports.map(r=>r.vehicle?.plate).filter(Boolean))];if(q)pl=pl.filter(x=>x.includes(q));document.getElementById('vL').innerHTML=vL(pl);}
+
+function renderReps(c){c.innerHTML=`<div class="section"><div class="card"><h2>Rapporter <span class="badge">${DB.reports.length}</span></h2>
+<div class="search-bar"><input placeholder="Søg..." oninput="fR(this.value)"></div><div id="rL">${rT(DB.reports)}</div></div></div>`;}
+function rT(l){if(!l.length)return'<div class="empty">Ingen rapporter</div>';return`<table class="tbl"><thead><tr><th>Nr</th><th>Dato</th><th>Bil</th><th>Kunde</th><th>Beløb</th><th>Status</th><th></th></tr></thead><tbody>
+${l.slice().reverse().map(r=>`<tr><td class="mono">${r.reportNr||'—'}</td><td>${r.date||'—'}</td><td class="mono">${r.vehicle?.plate||'—'}</td>
+<td>${r.customer?.name||'—'}</td><td class="mono">${fmt(calcT(r))}</td><td><span class="tag ${r.status==='approved'?'tag-green2':'tag-gold'}">${r.status==='approved'?'Godkendt':'Kladde'}</span></td>
+<td style="white-space:nowrap"><button class="btn btn-outline btn-sm" onclick="viewR('${r.id}')">Vis</button><button class="btn btn-outline btn-sm" onclick="editR('${r.id}')" style="margin-left:3px">✏️</button>
+<button class="btn btn-red btn-sm" onclick="dR('${r.id}')" style="margin-left:3px">✕</button></td></tr>`).join('')}</tbody></table>`;}
+function fR(q){document.getElementById('rL').innerHTML=rT(DB.reports.filter(r=>JSON.stringify(r).toLowerCase().includes(q.toLowerCase())));}
+function dR(id){if(!confirm('Slet?'))return;DB.reports=DB.reports.filter(r=>r.id!==id);saveDB();renderReps(document.getElementById('content'));}
+function viewR(id){const r=DB.reports.find(x=>x.id===id);if(!r)return;draft=JSON.parse(JSON.stringify(r));
+const sub=r.lines.reduce((a,l)=>a+(l.type==='arblon'?l.price:l.qty*l.price),0);
+document.getElementById('previewContent').innerHTML=bPrev(r,sub);document.getElementById('previewOverlay').classList.add('show');}
+
+// ═══ UTILS ═══
+function calcT(r){return(r.lines||[]).reduce((a,l)=>a+(l.type==='arblon'?l.price:(l.qty||0)*(l.price||0)),0)*1.25;}
+function fmt(n){return new Intl.NumberFormat('da-DK',{style:'currency',currency:'DKK',minimumFractionDigits:0,maximumFractionDigits:0}).format(n);}
+function fN(n){return n.toLocaleString('da-DK',{minimumFractionDigits:2,maximumFractionDigits:2})+' kr.';}
+function gLn(ls){const g={};ls.filter(l=>l.desc).forEach(l=>{const t=l.type||'del';if(!g[t])g[t]=[];g[t].push(l);});return g;}
+function esc(s){return s.replace(/'/g,"\\'");}
+
+// ═══ PWA SERVICE WORKER ═══
+if('serviceWorker' in navigator){
+const sw=`const CACHE='ss-v4';const URLS=['./'];self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(URLS))));
+self.addEventListener('fetch',e=>e.respondWith(fetch(e.request).catch(()=>caches.match(e.request))));`;
+const blob=new Blob([sw],{type:'application/javascript'});
+navigator.serviceWorker.register(URL.createObjectURL(blob)).catch(()=>{});}
+</script>
+</body>
+</html>
