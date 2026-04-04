@@ -592,7 +592,10 @@ ${lH}<div style="text-align:right;margin-top:8px;font-size:10px">Subtotal: ${fN(
 ${r.notes?`<div style="margin-top:6px;padding:6px;background:#f9f9f9;border-radius:6px;font-size:9px"><strong>Note:</strong> ${r.notes}</div>`:''}`;}
 
 // ═══ PDF + SHARE ═══
-async function sharePDF(){const r=draft,sub=r.lines.reduce((a,l)=>a+(l.type==='arblon'?l.price:l.qty*l.price),0),moms=sub*.25,total=sub+moms;
+async function sharePDF(){
+if(!window.jspdf){alert('PDF-bibliotek ikke indlæst. Tjek internetforbindelse.');return;}
+const r=draft,sub=r.lines.reduce((a,l)=>a+(l.type==='arblon'?l.price:l.qty*l.price),0),moms=sub*.25,total=sub+moms;
+try{
 const{jsPDF}=window.jspdf;const doc=new jsPDF({unit:'mm',format:'a4'});const pw=210,mx=15;let y=15;
 try{doc.addImage(LOGO_SRC,'JPEG',mx,y,18,18);}catch(e){}
 doc.setFontSize(10);doc.setFont('helvetica','bold');doc.text(COMPANY.name,pw-mx,y+4,{align:'right'});
@@ -618,13 +621,25 @@ doc.setFontSize(7);doc.text('Subtotal:',mx+105,y);doc.text(fN(sub),pw-mx,y,{alig
 doc.text('Moms (25%):',mx+105,y);doc.text(fN(moms),pw-mx,y,{align:'right'});y+=4.5;
 doc.setFontSize(10);doc.setFont('helvetica','bold');doc.text('Total inkl. moms:',mx+82,y);doc.text(fN(total),pw-mx,y,{align:'right'});
 if(r.notes){y+=7;if(y>268){doc.addPage();y=15;}doc.setFontSize(6.5);doc.setFont('helvetica','bold');doc.text('Bemærkninger:',mx,y);y+=3.5;doc.setFont('helvetica','normal');doc.text(doc.splitTextToSize(r.notes,pw-2*mx),mx,y);}
-const blob=doc.output('blob');const fn=`Rapport_${r.reportNr||'SR'}_${r.vehicle.plate||'bil'}.pdf`;
-// Try Web Share API with file
-let shared=false;
-try{const file=new File([blob],fn,{type:'application/pdf'});
-if(navigator.share&&navigator.canShare&&navigator.canShare({files:[file]})){
-await navigator.share({files:[file],title:`Rapport ${r.reportNr||''}`,text:`${r.vehicle.make||''} ${r.vehicle.model||''} (${r.vehicle.plate||''})`});shared=true;}}catch(e){if(e.name==='AbortError')shared=true;}
-if(!shared){doc.save(fn);}}
+const fn=`Rapport_${r.reportNr||'SR'}_${r.vehicle.plate||'bil'}.pdf`;
+await shareOrDownload(doc,fn,`Rapport ${r.reportNr||''}`);
+}catch(e){console.error('PDF:',e);alert('Fejl: '+e.message);}
+}
+
+async function shareOrDownload(doc,filename,title){
+const blob=doc.output('blob');
+const file=new File([blob],filename,{type:'application/pdf'});
+if(navigator.share){
+try{
+const sd={files:[file],title:title||filename};
+if(navigator.canShare&&navigator.canShare(sd)){await navigator.share(sd);return;}
+}catch(e){if(e.name==='AbortError')return;}
+}
+const url=URL.createObjectURL(blob);
+const a=document.createElement('a');a.href=url;a.download=filename;a.style.display='none';
+document.body.appendChild(a);a.click();
+setTimeout(()=>{document.body.removeChild(a);URL.revokeObjectURL(url);},500);
+}
 
 // ═══ OTHER VIEWS ═══
 function renderCusts(c){c.innerHTML=`<div class="section"><div class="card"><h2>Kunder <span class="badge">${DB.customers.length}</span></h2>
@@ -841,6 +856,8 @@ ${stTag(r.status,'style="font-size:.55rem"')}
 }
 
 async function exportStatsPDF(){
+if(!window.jspdf){alert('PDF-bibliotek ikke indlæst.');return;}
+try{
 const reps=getFilteredReports();if(!reps.length){alert('Ingen data at eksportere');return;}
 const{jsPDF}=window.jspdf;const doc=new jsPDF({unit:'mm',format:'a4'});const pw=210,mx=15;let y=15;
 
@@ -890,11 +907,8 @@ doc.text('Total inkl. moms:',mx+105,y);doc.text(fN(totalEx*1.25),pw-mx,y,{align:
 
 const blob=doc.output('blob');
 const fn=`Udtræk_${statsFilter.from}_${statsFilter.to}.pdf`;
-const file=new File([blob],fn,{type:'application/pdf'});
-let shared=false;
-try{if(navigator.share&&navigator.canShare&&navigator.canShare({files:[file]})){
-await navigator.share({files:[file],title:'Dataudtræk',text:subtitle});shared=true;}}catch(e){if(e.name==='AbortError')shared=true;}
-if(!shared)doc.save(fn);
+await shareOrDownload(doc,fn,'Dataudtræk');
+}catch(e){console.error('PDF:',e);alert('Fejl: '+e.message);}
 }
 
 // ═══ UTILS ═══
