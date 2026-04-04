@@ -330,6 +330,20 @@ if(s==='dashboard')renderDash(c);else if(s==='customers')renderCusts(c);else if(
 // ═══ DASHBOARD ═══
 function renderDash(c){
 const mo=new Date().toISOString().slice(0,7),mR=DB.reports.filter(r=>r.date?.startsWith(mo)),rev=mR.reduce((s,r)=>s+calcT(r),0);
+if(DB.reports.length===0){
+c.innerHTML=`<div class="section">
+<div class="card" style="text-align:center;padding:40px 20px">
+<div style="font-size:3rem;margin-bottom:12px">🔧</div>
+<h2 style="color:var(--gold);margin-bottom:8px;justify-content:center">Velkommen til Servicestationen</h2>
+<p style="color:var(--text2);font-size:.85rem;margin-bottom:20px;line-height:1.5">Opret din første reparationsrapport for at komme i gang.<br>Alle data synkroniseres automatisk.</p>
+<button class="btn btn-gold" onclick="go('newReport')" style="font-size:.9rem;padding:12px 28px">+ Opret første rapport</button>
+</div>
+<div class="stats">
+<div class="stat-card"><div class="val">0</div><div class="lbl">Rapporter</div></div>
+<div class="stat-card"><div class="val">0</div><div class="lbl">Kunder</div></div>
+<div class="stat-card"><div class="val mono">${fmt(0)}</div><div class="lbl">Denne måned</div></div>
+</div></div>`;
+return;}
 c.innerHTML=`<div class="section"><div class="stats">
 <div class="stat-card"><div class="val">${DB.reports.length}</div><div class="lbl">Rapporter</div></div>
 <div class="stat-card"><div class="val">${DB.customers.length}</div><div class="lbl">Kunder</div></div>
