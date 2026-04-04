@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="icon-192x192.png">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.2/jspdf.umd.min.js"></script>
+<script src="jspdf.min.js" onerror="this.onerror=null;this.src='https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.2/jspdf.umd.min.js'"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js" onerror="window._fbFail=true"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js" onerror="window._fbFail=true"></script>
 <style>
@@ -200,7 +200,7 @@ font-size:.7rem;cursor:pointer;transition:.15s;display:flex;align-items:center;g
 <img id="logo" alt="Logo">
 <div class="info">
 <h1>SERVICESTATIONEN <span class="sync-dot offline" id="syncDot" title="Firebase"></span></h1>
-<p>Autoværksted & Bilpleje · Glentevej 45, 4600 Køge<br>22 35 22 35 · info@servicestationen.dk <span style="opacity:.3;font-size:.5rem">v7</span></p>
+<p>Autoværksted & Bilpleje · Glentevej 45, 4600 Køge<br>22 35 22 35 · info@servicestationen.dk <span style="opacity:.3;font-size:.5rem">v8</span></p>
 </div>
 <button class="theme-btn" id="themeBtn" onclick="toggleTheme()" title="Skift tema">🌙</button>
 </header>
@@ -245,7 +245,7 @@ async function loadJsPDF(){
 if(window.jspdf)return;
 return new Promise(resolve=>{
 const s=document.createElement('script');
-s.src='https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.2/jspdf.umd.min.js';
+s.src=document.querySelector('script[src*=jspdf]')?.src||'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.2/jspdf.umd.min.js';
 s.onload=()=>resolve();
 s.onerror=()=>resolve();
 document.head.appendChild(s);
