@@ -200,7 +200,7 @@ font-size:.7rem;cursor:pointer;transition:.15s;display:flex;align-items:center;g
 <img id="logo" alt="Logo">
 <div class="info">
 <h1>SERVICESTATIONEN <span class="sync-dot offline" id="syncDot" title="Firebase"></span></h1>
-<p>Autoværksted & Bilpleje · Glentevej 45, 4600 Køge<br>22 35 22 35 · info@servicestationen.dk <span style="opacity:.3;font-size:.5rem">v5</span></p>
+<p>Autoværksted & Bilpleje · Glentevej 45, 4600 Køge<br>22 35 22 35 · info@servicestationen.dk <span style="opacity:.3;font-size:.5rem">v6</span></p>
 </div>
 <button class="theme-btn" id="themeBtn" onclick="toggleTheme()" title="Skift tema">🌙</button>
 </header>
@@ -320,6 +320,17 @@ const MOTOR_API_KEY='e34cgmwjymo55fwgyyoosz41owomx49a';
 const CAT_ICONS={"Motor": "🔧", "Bremser": "🛑", "Affjedring": "🔩", "Styretøj": "🎯", "El": "⚡", "Lys": "💡", "Udstødning": "💨", "Køling": "❄️", "Brændstof": "⛽", "Karrosseri": "🚗", "Transmission": "⚙️", "Dæk/Hjul": "🛞", "Værksted": "🔨"};
 const PARTS_DB={"dele": {"Motor": ["Bankesensor", "Brændstoffilter", "Bundkar", "Bundkarpakning", "Cylinderblok", "EGR-køler", "EGR-ventil", "Gasspjæld", "Gløderør", "Indsugningsmanifold", "Intercooler", "Kilerem", "Knastaksel", "Knastakselføler", "Krumtapaksel", "Krumtapføler", "Ladeluftslange", "Luftfilter", "Luftfilterhus", "Løberulle", "MAF-sensor", "MAP-sensor", "Motorophæng", "Motorstyreenhed", "Multirem", "O-ring", "Oliefilter", "Oliekøler", "Oliepumpe", "Olietemperaturføler", "Olietrykssensor", "Pakdåse knastaksel", "Pakdåse krumtap", "Plejlstang", "Remstrammer", "Stempel", "Stempelringe", "Svinghjul", "Tandrem", "Tandremssæt", "Tandremstrammer", "Topstykke", "Topstykkepakning", "Turbo", "Turboaktuator", "Tændrør", "Tændspole", "Ventil", "Ventildæksel", "Ventildækselpakning", "Ventilfjeder", "Ventilstyr", "Vippearm"], "Bremser": ["ABS-enhed", "ABS-sensor", "Bremseforstærker", "Bremsekaliber bag", "Bremsekaliber for", "Bremseklods bag", "Bremseklods for", "Bremserør", "Bremseskive bag", "Bremseskive for", "Bremsesko", "Bremseslange", "Bremsetromle", "Bremsevæske", "Bremsevæskebeholder", "Elektrisk håndbremsemotor", "Hovedbremsecylinder", "Håndbremsekabel", "Kaliberholder"], "Affjedring": ["Bagbro", "Bagbrobøsning", "Bærearm", "Bærekugle", "Fjeder bag", "Fjeder for", "Fjederben", "Hjulleje", "Hjulnav", "Silentblok", "Stabilisator", "Stabilisatorled", "Støddæmper bag", "Støddæmper for", "Topleje"], "Dæk/Hjul": ["Dæk sommer", "Dæk vinter", "Dæk all-season", "Dæksensor (TPMS)", "Fælg alu", "Fælg stål", "Hjulbolt", "Hjulkapsel", "Hjulmøtrik", "Slidindikator", "Ventil dæk"], "Styretøj": ["Rataksel", "Ratstamme", "Ratvinkelsensor", "Servobeholder", "Servopumpe", "Servoslange", "Sporstang", "Sporstangsende", "Styrehus", "Styrekugle", "Tandstang"], "El": ["Batteri", "CAN-modul", "Generator", "Jordpunkt", "Karrosseristyreenhed", "Komfortstyreenhed", "Ledningsnet", "Relæ", "Sikring", "Sikringsboks", "Spændingsregulator", "Starter", "Stikforbindelse"], "Lys": ["Baglygte", "Blinklys", "Centrallås motor", "Elrude motor", "Forlygte", "LED-modul", "Nummerpladelys", "Sprinklerdyse", "Sprinklerpumpe", "Tågelygte", "Viskerarm", "Viskerblad", "Viskermotor", "Xenon ballast"], "Udstødning": ["AdBlue-dyse", "AdBlue-pumpe", "Bagpotte", "Differenstrykssensor", "Fleksrør", "Forrør", "Katalysator", "Lambda-sonde", "Lyddæmper", "Mellemrør", "NOx-sensor", "Partikelfilter", "SCR-katalysator", "Udstødningsmanifold", "Udstødningstemperatursensor"], "Køling": ["Beholderdæksel", "Blæsermodstand", "Blæsermotor", "Ekspansionsbeholder", "Frostprop", "Køler", "Kølergitter", "Kølerramme", "Kølerventilator", "Kølervæske", "Køleslange nedre", "Køleslange øvre", "Temperaturføler", "Termostat", "Termostathus", "Vandpumpe", "Varmeapparatregister"], "Brændstof": ["Brændstofpumpe", "Brændstofslange", "Brændstoftank", "Brændstoftrykssensor", "Common rail", "Højtrykspumpe", "Indsprøjtningsdyse", "Returslange", "Tankarmatur", "Tankdæksel", "Tankmåler", "Trykregulator"], "Karrosseri": ["Airbag", "Bagklap", "Bagrude", "Dør", "Dørhåndtag", "Dørlås", "Forrude", "Instrumentpanel", "Kofanger bag", "Kofanger for", "Motorhjelm", "Sidespejl", "Sikkerhedssele", "Skærm", "Sæde"], "Transmission": ["Differentiale", "Drivaksel", "Drivled", "Gearkasse", "Gearkasseophæng", "Gearolie", "Gearskiftekabel", "Hovedcylinder", "Kardanaksel", "Koblingscylinder", "Koblingsplade", "Koblingssæt", "Manchet", "Mellemaksel", "Trykplade", "Udrykkerleje"]}, "termer": {"Værksted": ["AC-service", "Afbalancering", "Batteriskift", "Bremseudluftning", "Bremseudskiftning", "Diagnose", "Dækafbalancering", "Dækmontering", "Dækskift", "Fejlsøgning", "Hjuludmåling", "Kalibrering", "Olieskift", "Serviceeftersyn", "Softwareopdatering", "Synsklargøring"]}};
 const COMPANY={name:'Servicestationen',sub:'Autoværksted & Bilpleje',addr:'Glentevej 45',city:'4600 Køge',email:'info@servicestationen.dk',tel:'22 35 22 35'};
+
+// ═══ STATUS HELPERS (must be before any render call) ═══
+const STATUS_MAP={
+draft:{label:'Kladde',color:'var(--gold)',tagClass:'tag-gold',stampColor:'#c9a00a'},
+approved:{label:'Godkendt',color:'var(--green)',tagClass:'tag-green2',stampColor:'#34d399'},
+pending_invoice:{label:'Afventer fakt.',color:'var(--purple)',tagClass:'tag-purple2',stampColor:'#a78bfa'},
+invoiced:{label:'Faktureret',color:'var(--blue)',tagClass:'tag-blue3',stampColor:'#3b82f6'}
+};
+function stInfo(s){return STATUS_MAP[s]||STATUS_MAP.draft;}
+function stTag(s,extra=''){const i=stInfo(s);return`<span class="tag ${i.tagClass}" ${extra}>${i.label}</span>`;}
+function stStamp(s){const i=stInfo(s);const icon=s==='approved'?'✓ ':'';return`<span style="display:inline-block;padding:3px 12px;border:3px solid ${i.stampColor};color:${i.stampColor};border-radius:8px;font-weight:700;font-size:13px;transform:rotate(-5deg)">${icon}${i.label.toUpperCase()}</span>`;}
 
 let wizardStep=0,editingId=null,selectedCat=null;
 let draft={customerType:'private',customer:{},vehicle:{},lines:[],notes:'',status:'draft'};
@@ -576,17 +587,6 @@ function oPrev(){if(wizardStep===2)sLns();const sub=draft.lines.reduce((a,l)=>a+
 document.getElementById('previewContent').innerHTML=bPrev(draft,sub);document.getElementById('previewOverlay').classList.add('show');}
 function closePreview(){document.getElementById('previewOverlay').classList.remove('show');}
 function setStatus(s){draft.status=s;const ex=DB.reports.find(r=>r.id===draft.id);if(ex){ex.status=s;saveDB();}oPrev();}
-
-// Status helpers
-const STATUS_MAP={
-draft:{label:'Kladde',color:'var(--gold)',tagClass:'tag-gold',stampColor:'#c9a00a'},
-approved:{label:'Godkendt',color:'var(--green)',tagClass:'tag-green2',stampColor:'#34d399'},
-pending_invoice:{label:'Afventer fakt.',color:'var(--purple)',tagClass:'tag-purple2',stampColor:'#a78bfa'},
-invoiced:{label:'Faktureret',color:'var(--blue)',tagClass:'tag-blue3',stampColor:'#3b82f6'}
-};
-function stInfo(s){return STATUS_MAP[s]||STATUS_MAP.draft;}
-function stTag(s,extra=''){const i=stInfo(s);return`<span class="tag ${i.tagClass}" ${extra}>${i.label}</span>`;}
-function stStamp(s){const i=stInfo(s);const icon=s==='approved'?'✓ ':'';return`<span style="display:inline-block;padding:3px 12px;border:3px solid ${i.stampColor};color:${i.stampColor};border-radius:8px;font-weight:700;font-size:13px;transform:rotate(-5deg)">${icon}${i.label.toUpperCase()}</span>`;}
 
 function bPrev(r,sub){const moms=sub*.25,total=sub+moms,gr=gLn(r.lines);
 const stamp=stStamp(r.status);
