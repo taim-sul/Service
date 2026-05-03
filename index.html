@@ -209,6 +209,14 @@ font-size:.7rem;cursor:pointer;transition:.15s;display:flex;align-items:center;g
 .arblon-fields{grid-template-columns:1fr 50px 50px 68px 24px}
 }
 ::-webkit-scrollbar{width:4px;height:4px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--bg4);border-radius:3px}
+@media print{
+nav,header,.btn-row,.btn,#installBanner,.overlay,.theme-btn,.sync-dot,.add-btns,.cat-grid,.parts-panel,.search-bar{display:none!important}
+body{background:#fff!important;color:#111!important}
+.app{padding:0!important;max-width:100%!important}
+.card{border:1px solid #ddd!important;background:#fff!important;page-break-inside:avoid}
+.val,.lbl,.text2,.text3,.gold{color:#111!important}
+}
+
 </style>
 </head>
 <body>
@@ -228,6 +236,7 @@ font-size:.7rem;cursor:pointer;transition:.15s;display:flex;align-items:center;g
 <button onclick="go('vehicles')" data-s="vehicles">Biler</button>
 <button onclick="go('reports')" data-s="reports">Rapporter</button>
 <button onclick="go('stats')" data-s="stats">📊 Statistik</button>
+<button onclick="go('settings')" data-s="settings">⚙️ Indstillinger</button>
 </nav>
 <div id="content"></div>
 </div>
@@ -350,7 +359,7 @@ function stTag(s,extra=''){const i=stInfo(s);return`<span class="tag ${i.tagClas
 function stStamp(s){const i=stInfo(s);const icon=s==='approved'?'✓ ':'';return`<span style="display:inline-block;padding:3px 12px;border:3px solid ${i.stampColor};color:${i.stampColor};border-radius:8px;font-weight:700;font-size:13px;transform:rotate(-5deg)">${icon}${i.label.toUpperCase()}</span>`;}
 
 let wizardStep=0,editingId=null,selectedCat=null;
-let draft={customerType:'private',customer:{},vehicle:{},lines:[],notes:'',status:'draft'};
+let draft={customerType:'private',customer:{},vehicle:{},lines:[],notes:'',status:'draft',mechanic:'',deliveryDate:'',discount:0};
 function genId(){return Date.now().toString(36)+Math.random().toString(36).slice(2,6);}
 
 go('dashboard');
@@ -359,7 +368,7 @@ function go(s){
 document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('active',b.dataset.s===s));
 const c=document.getElementById('content');
 if(s==='newReport'){editingId=null;wizardStep=0;selectedCat=null;draft={customerType:'private',customer:{},vehicle:{},lines:[],notes:'',status:'draft'};renderWiz(c);return;}
-if(s==='dashboard')renderDash(c);else if(s==='customers')renderCusts(c);else if(s==='vehicles')renderVehs(c);else if(s==='reports')renderReps(c);else if(s==='stats')renderStats(c);
+if(s==='dashboard')renderDash(c);else if(s==='customers')renderCusts(c);else if(s==='vehicles')renderVehs(c);else if(s==='reports')renderReps(c);else if(s==='stats')renderStats(c);else if(s==='settings')renderSettings(c);
 }
 
 // ═══ DASHBOARD ═══
@@ -476,7 +485,22 @@ b.innerHTML=`<div class="card"><h2>Køretøj</h2>
 <div class="form-row"><div class="form-group"><label>Brændstof</label><select id="v_fu">${['','Benzin','Diesel','El','Hybrid','Plug-in Hybrid'].map(f=>`<option ${draft.vehicle.fuel===f?'selected':''}>${f||'Vælg...'}</option>`).join('')}</select></div>
 <div class="form-group"><label>KM-stand</label><input id="v_km" type="number" value="${draft.vehicle.km||''}"></div></div>
 <div id="pRes"></div>
+<div id="vHist"></div>
 </div><div class="btn-row"><button class="btn btn-outline" onclick="wB()">← Tilbage</button><div style="flex:1"></div><button class="btn btn-gold" onclick="wN()">Næste →</button></div>`;
+setTimeout(function(){
+var plate=(draft.vehicle.plate||'').replace(/\s/g,'').toUpperCase();
+var histEl=document.getElementById('vHist');if(!histEl)return;
+if(!plate){histEl.innerHTML='';return;}
+var prev=DB.reports.filter(function(r){return r.vehicle&&r.vehicle.plate&&r.vehicle.plate.replace(/\s/g,'').toUpperCase()===plate&&r.id!==draft.id;}).slice(-5).reverse();
+if(!prev.length){histEl.innerHTML='';return;}
+histEl.innerHTML='<div style="margin-top:12px;padding:10px;background:rgba(245,192,13,.05);border:1px solid rgba(245,192,13,.15);border-radius:8px">'
++'<div style="font-size:.68rem;color:var(--gold);font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">🚗 Bilhistorik — seneste '+prev.length+' rapporter</div>'
++prev.map(function(r){return'<div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border)">'
++'<div style="flex:1;min-width:0"><div style="font-size:.72rem;color:var(--text3)">'+r.date+' · '+r.reportNr+'</div>'
++'<div style="font-size:.75rem;color:var(--text2);margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+( r.lines||[]).map(function(l){return l.desc;}).filter(Boolean).slice(0,3).join(', ')+'</div></div>'
++'<span class="mono" style="font-size:.72rem;flex-shrink:0">'+fmt(calcT(r))+'</span></div>';}).join('')
++'</div>';
+},50);
 }
 
 async function lPlate(){const plate=(document.getElementById('v_p')?.value||'').replace(/\s/g,'').toUpperCase();if(!plate){alert('Indtast plade');return;}
@@ -564,13 +588,17 @@ function sLns(){document.querySelectorAll('.line-group').forEach((el,i)=>{if(!dr
 if(draft.lines[i].type==='arblon'){draft.lines[i].hours=Number(el.querySelector('.li-h')?.value)||0;draft.lines[i].rate=Number(el.querySelector('.li-r')?.value)||0;draft.lines[i].price=Number(el.querySelector('.li-p')?.value)||0;draft.lines[i].qty=1;}
 else{draft.lines[i].qty=Number(el.querySelector('.li-q')?.value)||1;draft.lines[i].price=Number(el.querySelector('.li-p')?.value)||0;}});draft.notes=document.getElementById('rN')?.value||draft.notes;}
 
-function rS3(b){sLns();const gr=gLn(draft.lines);const sub=draft.lines.reduce((a,l)=>a+(l.type==='arblon'?l.price:l.qty*l.price),0);const moms=sub*.25;
+function rS3(b){sLns();const gr=gLn(draft.lines);const sub=draft.lines.reduce((a,l)=>a+(l.type==='arblon'?l.price:l.qty*l.price),0);const disc=Number(draft.discount)||0;const netSub=Math.max(0,sub-disc);const moms=netSub*.25;
 b.innerHTML=`<div class="card"><h2>Oversigt</h2>
 <div class="form-row"><div class="form-group"><label>Kunde</label><div style="padding:8px;color:var(--text)">${draft.customer.name||'—'}${draft.customer.cvr?' (CVR: '+draft.customer.cvr+')':''}</div></div>
 <div class="form-group"><label>Bil</label><div style="padding:8px;color:var(--text)" class="mono">${draft.vehicle.plate||'—'} ${draft.vehicle.make||''} ${draft.vehicle.model||''}</div></div></div>
+<div class="form-row"><div class="form-group"><label>🔧 Mekaniker</label><input id="s3_mech" placeholder="Navn på mekaniker" value="${draft.mechanic||''}"></div>
+<div class="form-group"><label>📅 Afleveringsdato</label><input id="s3_del" type="date" value="${draft.deliveryDate||''}"></div></div>
+<div class="form-row"><div class="form-group"><label>💰 Rabat (kr. ekskl. moms)</label><input id="s3_disc" type="number" min="0" step="1" value="${draft.discount||0}" oninput="draft.discount=Number(this.value)||0;rS3(document.getElementById('wb'))"></div></div>
 ${rGT(gr)}
-<div style="text-align:right;margin-top:12px;font-size:.8rem;color:var(--text2)">Subtotal: <span class="mono">${fmt(sub)}</span><br>Moms (25%): <span class="mono">${fmt(moms)}</span></div>
-<div style="text-align:right;font-size:1.1rem;font-weight:700;color:var(--gold);margin-top:4px">Total: <span class="mono">${fmt(sub+moms)}</span></div>
+${disc>0?`<div style="text-align:right;margin-top:8px;font-size:.8rem;color:var(--red)">Rabat: <span class="mono">− ${fmt(disc)}</span></div>`:''}
+<div style="text-align:right;margin-top:${disc>0?'4':'12'}px;font-size:.8rem;color:var(--text2)">Subtotal: <span class="mono">${fmt(netSub)}</span><br>Moms (25%): <span class="mono">${fmt(moms)}</span></div>
+<div style="text-align:right;font-size:1.1rem;font-weight:700;color:var(--gold);margin-top:4px">Total: <span class="mono">${fmt(netSub+moms)}</span></div>
 ${draft.notes?`<div style="margin-top:8px;padding:8px;background:var(--bg3);border-radius:8px;font-size:.75rem;color:var(--text2)"><strong>Note:</strong> ${draft.notes}</div>`:''}</div>
 <div class="btn-row"><button class="btn btn-outline" onclick="wB()">← Tilbage</button><div style="flex:1"></div><button class="btn btn-outline" onclick="oPrev()">👁 Vis</button>
 <button class="btn btn-gold" onclick="saveR()">💾 ${editingId?'Opdater':'Gem'}</button></div>`;}
@@ -589,6 +617,10 @@ const c=document.getElementById('f_contact')?.value||'';if(!isF)draft.customer.n
 function cS1(){draft.vehicle.plate=(document.getElementById('v_p')?.value||'').toUpperCase().replace(/\s/g,'');draft.vehicle.vin=document.getElementById('v_vin')?.value||'';draft.vehicle.make=document.getElementById('v_mk')?.value||'';draft.vehicle.model=document.getElementById('v_md')?.value||'';draft.vehicle.year=document.getElementById('v_yr')?.value||'';draft.vehicle.fuel=document.getElementById('v_fu')?.value||'';draft.vehicle.km=document.getElementById('v_km')?.value||'';}
 
 function saveR(){
+draft.mechanic=document.getElementById('s3_mech')?.value||draft.mechanic||'';
+draft.deliveryDate=document.getElementById('s3_del')?.value||draft.deliveryDate||'';
+draft.discount=Number(document.getElementById('s3_disc')?.value)||draft.discount||0;
+
 if(editingId){const idx=DB.reports.findIndex(r=>r.id===editingId);if(idx>=0){draft.id=editingId;draft.date=DB.reports[idx].date;draft.reportNr=DB.reports[idx].reportNr;draft.updatedAt=new Date().toISOString();DB.reports[idx]=draft;}}
 else{draft.id=genId();draft.date=new Date().toISOString().slice(0,10);draft.reportNr='SR-'+(DB.reports.length+1).toString().padStart(4,'0');
 let ex=DB.customers.find(c=>c.name===draft.customer.name||(c.cvr&&c.cvr===draft.customer.cvr));
@@ -605,7 +637,7 @@ document.getElementById('previewContent').innerHTML=bPrev(draft,sub);document.ge
 function closePreview(){document.getElementById('previewOverlay').classList.remove('show');}
 function setStatus(s){draft.status=s;const ex=DB.reports.find(r=>r.id===draft.id);if(ex){ex.status=s;saveDB();}oPrev();}
 
-function bPrev(r,sub){const moms=sub*.25,total=sub+moms,gr=gLn(r.lines);
+function bPrev(r,sub){const disc=Number(r.discount)||0;const netSub=Math.max(0,sub-disc);const moms=netSub*.25,total=netSub+moms,gr=gLn(r.lines);
 const stamp=stStamp(r.status);
 const tL={del:'RESERVEDELE',arbejde:'ARBEJDE',arblon:'ARBEJDSLØN',service:'SERVICE',andet:'ANDET'};
 let lH='';for(const[t,ls]of Object.entries(gr)){const isA=t==='arblon';
@@ -625,7 +657,13 @@ ${r.customer.contact&&r.customer.contact!==r.customer.name?`<tr><td><strong>Kont
 <tr><td><strong>Mærke/Model</strong></td><td>${r.vehicle.make||''} ${r.vehicle.model||''}</td></tr><tr><td><strong>Årgang</strong></td><td>${r.vehicle.year||'—'}</td></tr>
 <tr><td><strong>Brændstof</strong></td><td>${r.vehicle.fuel||'—'}</td></tr><tr><td><strong>KM</strong></td><td>${r.vehicle.km||'—'}</td></tr>
 ${r.vehicle.vin?`<tr><td><strong>VIN</strong></td><td style="font-family:monospace;font-size:9px">${r.vehicle.vin}</td></tr>`:''}</table>
-${lH}<div style="text-align:right;margin-top:8px;font-size:10px">Subtotal: ${fN(sub)}<br>Moms: ${fN(moms)}</div>
+${lH}
+${r.mechanic||r.deliveryDate?`<table style="margin-top:6px"><tr><th colspan="2" style="background:#f5c00d;color:#111;font-size:9px">DETALJER</th></tr>
+${r.mechanic?`<tr><td><strong>Mekaniker</strong></td><td>${r.mechanic}</td></tr>`:''}
+${r.deliveryDate?`<tr><td><strong>Aflevering</strong></td><td>${r.deliveryDate}</td></tr>`:''}
+</table>`:''}
+${disc>0?`<div style="text-align:right;margin-top:4px;font-size:10px;color:#e00">Rabat: − ${fN(disc)}</div>`:''}
+<div style="text-align:right;margin-top:4px;font-size:10px">Subtotal: ${fN(netSub)}<br>Moms: ${fN(moms)}</div>
 <div style="text-align:right;font-size:14px;font-weight:700;margin-top:2px">Total: ${fN(total)}</div>
 ${r.notes?`<div style="margin-top:6px;padding:6px;background:#f9f9f9;border-radius:6px;font-size:9px"><strong>Note:</strong> ${r.notes}</div>`:''}`;}
 
@@ -633,7 +671,8 @@ ${r.notes?`<div style="margin-top:6px;padding:6px;background:#f9f9f9;border-radi
 function sharePDF(){
 try{
 if(!window.jspdf&&!window.jsPDF){alert('PDF-bibliotek indlæses... Prøv igen om 2 sekunder.');return;}
-const r=draft,sub=r.lines.reduce((a,l)=>a+(l.type==='arblon'?l.price:l.qty*l.price),0),moms=sub*.25,total=sub+moms;
+const r=draft,sub=r.lines.reduce((a,l)=>a+(l.type==='arblon'?l.price:l.qty*l.price),0);
+const disc2=Number(r.discount)||0;const netSub2=Math.max(0,sub-disc2);const moms=netSub2*.25,total=netSub2+moms;
 const doc=new (window.jspdf?window.jspdf.jsPDF:window.jsPDF)({unit:'mm',format:'a4'});const pw=210,mx=15;let y=15;
 try{doc.addImage(LOGO_SRC,'JPEG',mx,y,18,18);}catch(e){}
 doc.setFontSize(10);doc.setFont('helvetica','bold');doc.text(COMPANY.name,pw-mx,y+4,{align:'right'});
@@ -654,8 +693,10 @@ doc.setFontSize(6);doc.setFont('helvetica','bold');doc.text('Beskrivelse',mx+2,y
 ls.forEach(function(l){if(y>275){doc.addPage();y=15;}doc.text((l.desc||'').substring(0,55),mx+2,y);
 if(isA){doc.text(String(l.hours||0),mx+98,y);doc.text(fN(l.rate||0),mx+112,y);}else{doc.text(String(l.qty||1),mx+98,y);doc.text(fN(l.price||0),mx+112,y);}
 doc.text(fN(isA?l.price:((l.qty||1)*(l.price||0))),mx+145,y);y+=4.2;});y+=2;});
+if(r.mechanic||r.deliveryDate){if(y>255){doc.addPage();y=15;}sH('DETALJER');if(r.mechanic)iR('Mekaniker',r.mechanic);if(r.deliveryDate)iR('Afleveringsdato',r.deliveryDate);y+=2;}
 if(y>260){doc.addPage();y=15;}doc.setDrawColor(200,200,200);doc.line(mx+90,y,pw-mx,y);y+=4.5;
-doc.setFontSize(7);doc.setFont('helvetica','normal');doc.text('Subtotal:',mx+105,y);doc.text(fN(sub),pw-mx,y,{align:'right'});y+=4;
+if(disc2>0){doc.setFontSize(7);doc.setFont('helvetica','normal');doc.setTextColor(200,0,0);doc.text('Rabat:',mx+105,y);doc.text('− '+fN(disc2),pw-mx,y,{align:'right'});doc.setTextColor(0,0,0);y+=4;}
+doc.setFontSize(7);doc.setFont('helvetica','normal');doc.text('Subtotal:',mx+105,y);doc.text(fN(netSub2),pw-mx,y,{align:'right'});y+=4;
 doc.text('Moms (25%):',mx+105,y);doc.text(fN(moms),pw-mx,y,{align:'right'});y+=4.5;
 doc.setFontSize(10);doc.setFont('helvetica','bold');doc.text('Total inkl. moms:',mx+82,y);doc.text(fN(total),pw-mx,y,{align:'right'});
 if(r.notes){y+=7;if(y>268){doc.addPage();y=15;}doc.setFontSize(6.5);doc.setFont('helvetica','bold');doc.text('Bemærkninger:',mx,y);y+=3.5;doc.setFont('helvetica','normal');doc.text(doc.splitTextToSize(r.notes,pw-2*mx),mx,y);}
@@ -760,8 +801,18 @@ ${rps.map(r=>`<div style="display:flex;align-items:center;gap:8px;padding:8px 0;
 <button class="btn btn-outline btn-sm" onclick="editR('${r.id}')">✏️</button></div></div>`).join('')}</div>`;}).join('');}
 function sV(){const q=(document.getElementById('vS')?.value||'').toUpperCase();let pl=[...new Set(DB.reports.map(r=>r.vehicle?.plate).filter(Boolean))];if(q)pl=pl.filter(x=>x.includes(q));document.getElementById('vL').innerHTML=vL(pl);}
 
+let repStatusFilter='';
 function renderReps(c){c.innerHTML=`<div class="section"><div class="card"><h2>Rapporter <span class="badge">${DB.reports.length}</span></h2>
-<div class="search-bar"><input placeholder="Søg..." oninput="fR(this.value)"></div><div id="rL">${rT(DB.reports)}</div></div></div>`;}
+<div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px">
+<button class="btn ${!repStatusFilter?'btn-gold':'btn-outline'} btn-sm" onclick="setRepFilter('')">Alle</button>
+<button class="btn ${repStatusFilter==='draft'?'btn-gold':'btn-outline'} btn-sm" onclick="setRepFilter('draft')">📝 Kladde</button>
+<button class="btn ${repStatusFilter==='approved'?'btn-gold':'btn-outline'} btn-sm" onclick="setRepFilter('approved')">✓ Godkendt</button>
+<button class="btn ${repStatusFilter==='pending_invoice'?'btn-gold':'btn-outline'} btn-sm" onclick="setRepFilter('pending_invoice')">⏳ Afv. fakt.</button>
+<button class="btn ${repStatusFilter==='invoiced'?'btn-gold':'btn-outline'} btn-sm" onclick="setRepFilter('invoiced')">💰 Faktureret</button>
+</div>
+<div class="search-bar"><input placeholder="Søg..." oninput="fR(this.value)"></div><div id="rL">${rT(getRepList())}</div></div></div>`;}
+function getRepList(){return repStatusFilter?DB.reports.filter(r=>r.status===repStatusFilter):DB.reports;}
+function setRepFilter(s){repStatusFilter=s;setTimeout(function(){renderReps(document.getElementById('content'));},0);}
 function rT(l){if(!l.length)return'<div class="empty">Ingen rapporter</div>';return l.slice().reverse().map(r=>`<div style="display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)">
 <div style="flex:1;min-width:0">
 <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
@@ -777,10 +828,20 @@ ${stTag(r.status)}
 <div style="display:flex;gap:4px;flex-shrink:0">
 <button class="btn btn-outline btn-sm" onclick="viewR('${r.id}')">Vis</button>
 <button class="btn btn-outline btn-sm" onclick="editR('${r.id}')">✏️</button>
-<button class="btn btn-red btn-sm" onclick="dR('${r.id}')">✕</button>
+<button class="btn btn-outline btn-sm" onclick="cpR('${r.id}')">⎘</button><button class="btn btn-red btn-sm" onclick="dR('${r.id}')">✕</button>
 </div></div>`).join('');}
-function fR(q){document.getElementById('rL').innerHTML=rT(DB.reports.filter(r=>JSON.stringify(r).toLowerCase().includes(q.toLowerCase())));}
-function dR(id){if(!confirm('Slet?'))return;DB.reports=DB.reports.filter(r=>r.id!==id);saveDB();renderReps(document.getElementById('content'));}
+function fR(q){document.getElementById('rL').innerHTML=rT(getRepList().filter(r=>JSON.stringify(r).toLowerCase().includes(q.toLowerCase())));}
+function dR(id){if(!confirm('Slet?'))return;DB.reports=DB.reports.filter(r=>r.id!==id);saveDB();setTimeout(function(){renderReps(document.getElementById('content'));},0);}
+function cpR(id){const r=DB.reports.find(x=>x.id===id);if(!r)return;
+const copy=JSON.parse(JSON.stringify(r));
+copy.id=genId();copy.date=new Date().toISOString().slice(0,10);
+copy.reportNr='SR-'+(DB.reports.length+1).toString().padStart(4,'0');
+copy.status='draft';copy.createdAt=new Date().toISOString();
+DB.reports.push(copy);saveDB();
+editingId=copy.id;draft=JSON.parse(JSON.stringify(copy));wizardStep=0;selectedCat=null;
+document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('active',b.dataset.s==='newReport'));
+renderWiz(document.getElementById('content'));
+}
 function viewR(id){const r=DB.reports.find(x=>x.id===id);if(!r)return;draft=JSON.parse(JSON.stringify(r));
 const sub=r.lines.reduce((a,l)=>a+(l.type==='arblon'?l.price:l.qty*l.price),0);
 document.getElementById('previewContent').innerHTML=bPrev(r,sub);document.getElementById('previewOverlay').classList.add('show');}
@@ -1035,6 +1096,72 @@ if(r.notes){py+=7;if(py>268){doc.addPage();py=15;}doc.setFontSize(6.5);doc.setFo
 var fn='Udtræk_'+statsFilter.from+'_'+statsFilter.to+'.pdf';
 doShare(doc,fn);
 }catch(e){alert('PDF fejl: '+e.message);}
+}
+
+
+function renderSettings(c){
+c.innerHTML=`<div class="section">
+<div class="card"><h2>⚙️ Indstillinger</h2>
+
+<div style="margin-bottom:16px">
+<div style="font-size:.72rem;color:var(--text3);text-transform:uppercase;font-weight:600;margin-bottom:8px">💾 Backup & Import</div>
+<div class="btn-row">
+<button class="btn btn-outline" onclick="exportJSON()">⬇ Eksportér JSON-backup</button>
+<label class="btn btn-outline" style="cursor:pointer">⬆ Importér JSON-backup<input type="file" accept=".json" onchange="importJSON(event)" style="display:none"></label>
+</div>
+<div style="font-size:.7rem;color:var(--text3);margin-top:8px">Eksportér alle rapporter og kunder som JSON-fil. Importer en tidligere backup for at gendanne data.</div>
+</div>
+
+<div style="border-top:1px solid var(--border);padding-top:16px;margin-top:4px">
+<div style="font-size:.72rem;color:var(--text3);text-transform:uppercase;font-weight:600;margin-bottom:8px">🗑 Slet alle data</div>
+<button class="btn btn-red" onclick="deleteAllData()">⚠ Slet ALLE data permanent</button>
+<div style="font-size:.7rem;color:var(--text3);margin-top:8px">Dette sletter alle rapporter og kunder permanent. Kræver dobbelt bekræftelse.</div>
+</div>
+
+</div>
+
+<div class="card"><h2>📱 Om appen</h2>
+<div style="font-size:.8rem;color:var(--text2);line-height:1.8">
+<div>Version: <strong>v9</strong></div>
+<div>Rapporter: <strong>${DB.reports.length}</strong></div>
+<div>Kunder: <strong>${DB.customers.length}</strong></div>
+<div>Synkronisering: <strong>${firebaseReady?'Firebase aktiv':'Kun lokalt'}</strong></div>
+</div>
+</div>
+</div>`;
+}
+
+function exportJSON(){
+const data={exportedAt:new Date().toISOString(),version:9,customers:DB.customers,reports:DB.reports};
+const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+const url=URL.createObjectURL(blob);
+const a=document.createElement('a');a.href=url;a.download='Servicestationen_backup_'+new Date().toISOString().slice(0,10)+'.json';
+document.body.appendChild(a);a.click();setTimeout(function(){document.body.removeChild(a);URL.revokeObjectURL(url);},500);
+}
+
+function importJSON(event){
+const file=event.target.files[0];if(!file)return;
+const reader=new FileReader();
+reader.onload=function(e){
+try{
+const data=JSON.parse(e.target.result);
+if(!data.customers||!data.reports){alert('Ugyldig backupfil — mangler customers/reports');return;}
+if(!confirm('Import vil OVERSKRIVE alle eksisterende data med '+data.reports.length+' rapporter og '+data.customers.length+' kunder.\n\nFortsat?'))return;
+DB.customers=data.customers;DB.reports=data.reports;
+saveDB();alert('Import fuldført! '+DB.reports.length+' rapporter og '+DB.customers.length+' kunder gendannet.');
+setTimeout(function(){renderSettings(document.getElementById('content'));},0);
+}catch(err){alert('Fejl ved import: '+err.message);}
+};
+reader.readAsText(file);
+}
+
+function deleteAllData(){
+if(!confirm('ADVARSEL: Dette sletter ALLE rapporter og kunder permanent.\n\nEr du sikker?'))return;
+if(!confirm('Sidste chance — tryk OK for at slette alt permanent.'))return;
+DB.customers=[];DB.reports=[];
+saveDB();
+alert('Alle data slettet.');
+setTimeout(function(){go('dashboard');},0);
 }
 
 // ═══ UTILS ═══
