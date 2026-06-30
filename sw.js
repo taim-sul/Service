@@ -1,4 +1,4 @@
-const CACHE_NAME = 'servicestationen-v8';
+const CACHE_NAME = 'DiN Servicestation-v9';
 const URLS_TO_CACHE = [
   './',
   './index.html',
