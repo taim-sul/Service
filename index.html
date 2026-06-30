@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>Servicestationen – Reparationsrapport</title>
+<title>DiN Servicestation – Reparationsrapport</title>
 <meta name="theme-color" content="#f5c00d">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -224,8 +224,8 @@ body{background:#fff!important;color:#111!important}
 <header>
 <img id="logo" alt="Logo">
 <div class="info">
-<h1>SERVICESTATIONEN <span class="sync-dot offline" id="syncDot" title="Firebase"></span></h1>
-<p>Autoværksted & Bilpleje · Glentevej 45, 4600 Køge<br>22 35 22 35 · info@servicestationen.dk <span style="opacity:.3;font-size:.5rem">v8</span></p>
+<h1>DiN Servicestation <span class="sync-dot offline" id="syncDot" title="Firebase"></span></h1>
+<p>Autoværksted & Bilpleje · Glentevej 45, 4600 Køge<br>22 35 22 35 · info@DiN Servicestation.dk <span style="opacity:.3;font-size:.5rem">v8</span></p>
 </div>
 <button class="theme-btn" id="themeBtn" onclick="toggleTheme()" title="Skift tema">🌙</button>
 </header>
@@ -285,9 +285,9 @@ if(typeof firebase!=='undefined'){
 try{
 firebase.initializeApp({
 apiKey:"AIzaSyADJ-fgD_1_mDZhDKCYg5LxHTR3o6sy9ns",
-authDomain:"servicestationen-55e2c.firebaseapp.com",
-projectId:"servicestationen-55e2c",
-storageBucket:"servicestationen-55e2c.firebasestorage.app",
+authDomain:"DiN Servicestation-55e2c.firebaseapp.com",
+projectId:"DiN Servicestation-55e2c",
+storageBucket:"DiN Servicestation-55e2c.firebasestorage.app",
 messagingSenderId:"197274297717",
 appId:"1:197274297717:web:9a834ee9fa1fd676e8df3c"
 });
@@ -345,7 +345,7 @@ const MOTOR_API_KEY='e34cgmwjymo55fwgyyoosz41owomx49a';
 // ═══ PARTS DATABASE (217 items — masterliste) ═══
 const CAT_ICONS={"Motor": "🔧", "Bremser": "🛑", "Affjedring": "🔩", "Styretøj": "🎯", "El": "⚡", "Lys": "💡", "Udstødning": "💨", "Køling": "❄️", "Brændstof": "⛽", "Karrosseri": "🚗", "Transmission": "⚙️", "Dæk/Hjul": "🛞", "Værksted": "🔨"};
 const PARTS_DB={"dele": {"Motor": ["Bankesensor", "Brændstoffilter", "Bundkar", "Bundkarpakning", "Cylinderblok", "EGR-køler", "EGR-ventil", "Gasspjæld", "Gløderør", "Indsugningsmanifold", "Intercooler", "Kilerem", "Knastaksel", "Knastakselføler", "Krumtapaksel", "Krumtapføler", "Ladeluftslange", "Luftfilter", "Luftfilterhus", "Løberulle", "MAF-sensor", "MAP-sensor", "Motorophæng", "Motorstyreenhed", "Multirem", "O-ring", "Oliefilter", "Oliekøler", "Oliepumpe", "Olietemperaturføler", "Olietrykssensor", "Pakdåse knastaksel", "Pakdåse krumtap", "Plejlstang", "Remstrammer", "Stempel", "Stempelringe", "Svinghjul", "Tandrem", "Tandremssæt", "Tandremstrammer", "Topstykke", "Topstykkepakning", "Turbo", "Turboaktuator", "Tændrør", "Tændspole", "Ventil", "Ventildæksel", "Ventildækselpakning", "Ventilfjeder", "Ventilstyr", "Vippearm"], "Bremser": ["ABS-enhed", "ABS-sensor", "Bremseforstærker", "Bremsekaliber bag", "Bremsekaliber for", "Bremseklods bag", "Bremseklods for", "Bremserør", "Bremseskive bag", "Bremseskive for", "Bremsesko", "Bremseslange", "Bremsetromle", "Bremsevæske", "Bremsevæskebeholder", "Elektrisk håndbremsemotor", "Hovedbremsecylinder", "Håndbremsekabel", "Kaliberholder"], "Affjedring": ["Bagbro", "Bagbrobøsning", "Bærearm", "Bærekugle", "Fjeder bag", "Fjeder for", "Fjederben", "Hjulleje", "Hjulnav", "Silentblok", "Stabilisator", "Stabilisatorled", "Støddæmper bag", "Støddæmper for", "Topleje"], "Dæk/Hjul": ["Dæk sommer", "Dæk vinter", "Dæk all-season", "Dæksensor (TPMS)", "Fælg alu", "Fælg stål", "Hjulbolt", "Hjulkapsel", "Hjulmøtrik", "Slidindikator", "Ventil dæk"], "Styretøj": ["Rataksel", "Ratstamme", "Ratvinkelsensor", "Servobeholder", "Servopumpe", "Servoslange", "Sporstang", "Sporstangsende", "Styrehus", "Styrekugle", "Tandstang"], "El": ["Batteri", "CAN-modul", "Generator", "Jordpunkt", "Karrosseristyreenhed", "Komfortstyreenhed", "Ledningsnet", "Relæ", "Sikring", "Sikringsboks", "Spændingsregulator", "Starter", "Stikforbindelse"], "Lys": ["Baglygte", "Blinklys", "Centrallås motor", "Elrude motor", "Forlygte", "LED-modul", "Nummerpladelys", "Sprinklerdyse", "Sprinklerpumpe", "Tågelygte", "Viskerarm", "Viskerblad", "Viskermotor", "Xenon ballast"], "Udstødning": ["AdBlue-dyse", "AdBlue-pumpe", "Bagpotte", "Differenstrykssensor", "Fleksrør", "Forrør", "Katalysator", "Lambda-sonde", "Lyddæmper", "Mellemrør", "NOx-sensor", "Partikelfilter", "SCR-katalysator", "Udstødningsmanifold", "Udstødningstemperatursensor"], "Køling": ["Beholderdæksel", "Blæsermodstand", "Blæsermotor", "Ekspansionsbeholder", "Frostprop", "Køler", "Kølergitter", "Kølerramme", "Kølerventilator", "Kølervæske", "Køleslange nedre", "Køleslange øvre", "Temperaturføler", "Termostat", "Termostathus", "Vandpumpe", "Varmeapparatregister"], "Brændstof": ["Brændstofpumpe", "Brændstofslange", "Brændstoftank", "Brændstoftrykssensor", "Common rail", "Højtrykspumpe", "Indsprøjtningsdyse", "Returslange", "Tankarmatur", "Tankdæksel", "Tankmåler", "Trykregulator"], "Karrosseri": ["Airbag", "Bagklap", "Bagrude", "Dør", "Dørhåndtag", "Dørlås", "Forrude", "Instrumentpanel", "Kofanger bag", "Kofanger for", "Motorhjelm", "Sidespejl", "Sikkerhedssele", "Skærm", "Sæde"], "Transmission": ["Differentiale", "Drivaksel", "Drivled", "Gearkasse", "Gearkasseophæng", "Gearolie", "Gearskiftekabel", "Hovedcylinder", "Kardanaksel", "Koblingscylinder", "Koblingsplade", "Koblingssæt", "Manchet", "Mellemaksel", "Trykplade", "Udrykkerleje"]}, "termer": {"Værksted": ["AC-service", "Afbalancering", "Batteriskift", "Bremseudluftning", "Bremseudskiftning", "Diagnose", "Dækafbalancering", "Dækmontering", "Dækskift", "Fejlsøgning", "Hjuludmåling", "Kalibrering", "Olieskift", "Serviceeftersyn", "Softwareopdatering", "Synsklargøring"]}};
-const COMPANY={name:'Servicestationen',sub:'Autoværksted & Bilpleje',addr:'Glentevej 45',city:'4600 Køge',email:'info@servicestationen.dk',tel:'22 35 22 35'};
+const COMPANY={name:'DiN Servicestation',sub:'Autoværksted & Bilpleje',addr:'Glentevej 45',city:'4600 Køge',email:'info@DiN Servicestation.dk',tel:'22 35 22 35'};
 
 // ═══ STATUS HELPERS (must be before any render call) ═══
 const STATUS_MAP={
@@ -378,7 +378,7 @@ if(DB.reports.length===0){
 c.innerHTML=`<div class="section">
 <div class="card" style="text-align:center;padding:40px 20px">
 <div style="font-size:3rem;margin-bottom:12px">🔧</div>
-<h2 style="color:var(--gold);margin-bottom:8px;justify-content:center">Velkommen til Servicestationen</h2>
+<h2 style="color:var(--gold);margin-bottom:8px;justify-content:center">Velkommen til DiN Servicestation</h2>
 <p style="color:var(--text2);font-size:.85rem;margin-bottom:20px;line-height:1.5">Opret din første reparationsrapport for at komme i gang.<br>Alle data synkroniseres automatisk.</p>
 <button class="btn btn-gold" onclick="go('newReport')" style="font-size:.9rem;padding:12px 28px">+ Opret første rapport</button>
 </div>
@@ -470,7 +470,7 @@ function clearCust(){
 draft.customer={};draft.customerType='private';rStep();
 }
 async function lCVR(){const cvr=document.getElementById('f_cvr').value.replace(/\s/g,'');if(cvr.length!==8){alert('CVR: 8 cifre');return;}
-try{const r=await fetch(`https://cvrapi.dk/api?search=${cvr}&country=dk`,{headers:{'User-Agent':'Servicestationen'}});const d=await r.json();
+try{const r=await fetch(`https://cvrapi.dk/api?search=${cvr}&country=dk`,{headers:{'User-Agent':'DiN Servicestation'}});const d=await r.json();
 if(d.name){document.getElementById('f_name').value=d.name;document.getElementById('f_addr').value=`${d.address||''}, ${d.zipcode||''} ${d.city||''}`;
 draft.customer.cvr=cvr;draft.customer.name=d.name;draft.customer.address=document.getElementById('f_addr').value;}else alert('Ikke fundet');}catch(e){alert('CVR fejlede');}}
 
@@ -734,18 +734,18 @@ var plade=r.vehicle?r.vehicle.plate||'':'';
 var mærke=r.vehicle?(r.vehicle.make||'')+' '+(r.vehicle.model||''):'';
 var total=r.lines?fN(r.lines.reduce(function(a,l){return a+(l.type==='arblon'?l.price:(l.qty||0)*(l.price||0));},0)*1.25):'';
 
-var waMsg='Reparationsrapport fra Servicestationen%0A%0A'
+var waMsg='Reparationsrapport fra DiN Servicestation%0A%0A'
 +'Kunde: '+encodeURIComponent(kundeNavn)+'%0A'
 +'Bil: '+encodeURIComponent(plade+' '+mærke)+'%0A'
 +'Total inkl. moms: '+encodeURIComponent(total)+'%0A%0A'
 +'PDF er vedhæftet separat.%0A%0A'
-+'Servicestationen%0AGlentevej 45, 4600 Køge%0ATlf: 22 35 22 35';
++'DiN Servicestation%0AGlentevej 45, 4600 Køge%0ATlf: 22 35 22 35';
 
 var mailSubj=encodeURIComponent('Reparationsrapport '+(r.reportNr||'')+' - '+plade);
 var mailBody=encodeURIComponent('Kære '+(kundeNavn||'kunde')+',\n\n'
 +'Vedhæftet finder du reparationsrapporten for din '+mærke.trim()+' ('+plade+').\n\n'
 +'Estimeret pris inkl. moms: '+total+'\n\n'
-+'Med venlig hilsen\nServicestationen\nGlentevej 45, 4600 Køge\nTlf: 22 35 22 35');
++'Med venlig hilsen\nDiN Servicestation\nGlentevej 45, 4600 Køge\nTlf: 22 35 22 35');
 
 var kundeEmail=r.customer?r.customer.email||'':'';
 var kundeTlf=r.customer?r.customer.phone||'':'';
@@ -1135,7 +1135,7 @@ function exportJSON(){
 const data={exportedAt:new Date().toISOString(),version:9,customers:DB.customers,reports:DB.reports};
 const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
 const url=URL.createObjectURL(blob);
-const a=document.createElement('a');a.href=url;a.download='Servicestationen_backup_'+new Date().toISOString().slice(0,10)+'.json';
+const a=document.createElement('a');a.href=url;a.download='DiN Servicestation_backup_'+new Date().toISOString().slice(0,10)+'.json';
 document.body.appendChild(a);a.click();setTimeout(function(){document.body.removeChild(a);URL.revokeObjectURL(url);},500);
 }
 
@@ -1182,7 +1182,7 @@ banner.style.cssText='position:fixed;bottom:0;left:0;right:0;z-index:9999;paddin
 banner.innerHTML=`
 <img src="icon-192x192.png" style="width:44px;height:44px;border-radius:10px;flex-shrink:0" alt="" onerror="this.style.display='none'">
 <div style="flex:1;min-width:0">
-<div style="font-weight:700;font-size:.85rem;color:var(--gold)">Installér Servicestationen</div>
+<div style="font-weight:700;font-size:.85rem;color:var(--gold)">Installér DiN Servicestation</div>
 <div style="font-size:.7rem;color:var(--text3);margin-top:2px">Tilføj appen til din startskærm for hurtig adgang</div>
 </div>
 <button onclick="doInstall()" style="flex-shrink:0;padding:8px 16px;background:var(--gold);color:#111;border:none;border-radius:8px;font-weight:700;font-size:.78rem;cursor:pointer">Installér</button>
@@ -1220,7 +1220,7 @@ banner.style.cssText='position:fixed;bottom:0;left:0;right:0;z-index:9999;paddin
 banner.innerHTML=`
 <div style="font-size:1.6rem;flex-shrink:0">📲</div>
 <div style="flex:1;min-width:0">
-<div style="font-weight:700;font-size:.82rem;color:var(--gold)">Installér Servicestationen</div>
+<div style="font-weight:700;font-size:.82rem;color:var(--gold)">Installér DiN Servicestation</div>
 <div style="font-size:.68rem;color:var(--text3);margin-top:2px">Tryk <strong>Del</strong> ↗ og derefter <strong>"Føj til hjemmeskærm"</strong></div>
 </div>
 <button onclick="this.parentElement.remove();localStorage.setItem('ss_ios_install_dismissed',Date.now())" style="flex-shrink:0;padding:6px;background:none;border:none;color:var(--text3);cursor:pointer;font-size:1.1rem">✕</button>`;
